@@ -1,0 +1,32 @@
+@import './variables';
+@import './theme';
+// Base styles
+body {
+  font-family: $font-family;
+  padding: $padding;
+  margin: 0;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+// Default theme
+:root {
+  @include light-theme;
+}
+
+// Dark theme
+[data-theme='dark'] {
+  @include dark-theme;
+}
+
+// Example usage
+h1 {
+  color: var(--primary-color);
+}
+
+p {
+  color: var(--text-color);
+}
+
+body {
+  background-color: var(--background-color);
+}

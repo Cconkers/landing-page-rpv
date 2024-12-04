@@ -1,13 +1,20 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
   title = 'landing-page-rpv';
+
+  toggleTheme() {
+    const theme = document.documentElement.getAttribute('data-theme');
+    console.log(1, theme);
+
+    document.documentElement.setAttribute('data-theme', theme === 'dark' ? 'light' : 'dark');
+    console.log(2,theme);
+  }
+
 }

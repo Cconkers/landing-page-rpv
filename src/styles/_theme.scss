@@ -1,0 +1,17 @@
+// _theme.scss
+@import 'variables';
+// Light theme mixin
+@mixin light-theme {
+  --background-color: #{$background-light};
+  --text-color: #{$text-light};
+  --primary-color: #{$primary-color};
+  --secondary-color: #{$secondary-color};
+}
+
+// Dark theme mixin
+@mixin dark-theme {
+  --background-color: #{$background-dark};
+  --text-color: #{$text-dark};
+  --primary-color: #{$primary-color};
+  --secondary-color: #{$secondary-color};
+}
