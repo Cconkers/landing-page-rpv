@@ -1,11 +1,16 @@
-@import './variables';
-@import './theme';
+@import "./variables";
+@import "./theme";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 // Base styles
 body {
   font-family: $font-family;
   padding: $padding;
   margin: 0;
-  transition: background-color 0.3s, color 0.3s;
+  transition:
+    background-color 0.3s,
+    color 0.3s;
 }
 
 // Default theme
@@ -14,7 +19,7 @@ body {
 }
 
 // Dark theme
-[data-theme='dark'] {
+[data-theme="dark"] {
   @include dark-theme;
 }
 
