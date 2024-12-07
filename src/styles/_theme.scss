@@ -1,11 +1,20 @@
-// _theme.scss
 @import 'variables';
+
 // Light theme mixin
 @mixin light-theme {
   --background-color: #{$background-light};
   --text-color: #{$text-light};
   --primary-color: #{$primary-color};
   --secondary-color: #{$secondary-color};
+  --danger-color: #{$danger-color};
+
+  // Hover & active effects preprocesados
+  --hover-primary: #{darken($primary-color, 20%)};
+  --hover-secondary: #{darken($secondary-color, 20%)};
+  --active-primary: #{darken($primary-color, 20%)};
+  --active-secondary: #{darken($secondary-color, 20%)};
+  --hover-danger: #{darken($danger-color, 20%)};
+  --active-danger: #{darken($danger-color, 20%)};
 }
 
 // Dark theme mixin
@@ -14,4 +23,13 @@
   --text-color: #{$text-dark};
   --primary-color: #{$primary-color};
   --secondary-color: #{$secondary-color};
+  --danger-color: #{$danger-color};
+
+  // Hover & active effects preprocesados
+  --hover-primary: #{lighten($primary-color, 20%)};
+  --hover-secondary: #{lighten($secondary-color, 20%)};
+  --active-primary: #{lighten($primary-color, 20%)};
+  --active-secondary: #{lighten($secondary-color, 20%)};
+  --hover-danger: #{lighten($danger-color, 20%)};
+  --active-danger: #{lighten($danger-color, 20%)};
 }

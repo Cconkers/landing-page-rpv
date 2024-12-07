@@ -3,14 +3,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 // Base styles
-body {
+html {
   font-family: $font-family;
   padding: $padding;
   margin: 0;
-  transition:
-    background-color 0.3s,
-    color 0.3s;
 }
 
 // Default theme
@@ -34,4 +32,52 @@ p {
 
 body {
   background-color: var(--background-color);
+}
+
+button {
+  background-color: var(--primary-color);
+  color: var(--text-color);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition:
+    background-color 0.3s ease,
+    transform 0.1s ease;
+
+  &:hover {
+    background-color: var(--hover-primary);
+  }
+
+  &:active {
+    background-color: var(--active-primary);
+    transform: scale(0.95);
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+
+button.danger {
+  background-color: var(--danger-color);
+
+  &:hover {
+    background-color: var(--hover-danger);
+  }
+
+  &:active {
+    background-color: var(--active-danger);
+  }
+}
+
+a {
+  &:hover {
+    color: var(--hover-primary);
+    text-decoration: underline;
+  }
+  &:active {
+    color: var(--active-primary);
+    transform: scale(0.95);
+  }
 }

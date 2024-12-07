@@ -1,17 +1,24 @@
-// _variables.scss
-
-// Color variables
+// Sass Colors
 $primary-color: #3498db;
 $secondary-color: #2ecc71;
+$danger-color: #e74c3c;
+$success-color: #2ecc71;
+$warning-color: #f1c40f;
+
+// Light Theme Colors
 $background-light: #ffffff;
 $text-light: #000000;
+$hover-light: lighten($background-light, 10%);
+$active-light: lighten($background-light, 15%);
 
+// Dark Theme Colors
 $background-dark: #121212;
 $text-dark: #f5f5f5;
+$hover-dark: darken($background-dark, 10%);
+$active-dark: darken($background-dark, 15%);
+
+// Fonts
+$font-family: "Roboto", sans-serif;
 
 // Spacing
 $padding: 16px;
-$margin: 16px;
-
-// Fonts
-$font-family: 'Roboto', sans-serif;
