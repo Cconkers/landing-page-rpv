@@ -1,6 +1,7 @@
 import { Component, Signal } from '@angular/core';
-import { AppState, AppStateService } from '../../services/app-state.service';
+
 import { TranslateModule } from '@ngx-translate/core';
+import { AppState, AppStateService } from '../../services/app-state/app-state.service';
 
 @Component({
   selector: 'app-language-dropdown',

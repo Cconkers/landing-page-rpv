@@ -1,3 +1,4 @@
+<app-toast-message></app-toast-message>
 <section class="bg-background text-text m-10">
   <div class="flex flex-col items-center justify-center px-6 mx-auto lg:py-0">
     <div class="w-full bg-background text-text rounded-lg shadow border md:mt-0 sm:max-w-md xl:p-0">
@@ -11,7 +12,7 @@
             <label for="userEmail" class="block mb-2 text-sm font-medium text-text">
               {{ 'sign-up.email' | translate }}
             </label>
-            <input type="email" autocomplete="email" name="email"
+            <input type="email" autocomplete="email" name="email" id="userEmail"
               [ngClass]="{'border-danger': signUpForm.get('userEmail')?.invalid && signUpForm.get('userEmail')?.touched, 'border-success': signUpForm.get('userEmail')?.valid}"
               formControlName="userEmail"
               class="bg-background border text-text rounded-lg block w-full p-2.5 placeholder:text-text" />
@@ -27,7 +28,8 @@
             <label for="userPassword" class="block mb-2 text-sm font-medium text-text">
               {{ 'sign-up.password' | translate }}
             </label>
-            <input formControlName="userPassword" type="password" id="userPassword" name="password" autocomplete="new-password"
+            <input formControlName="userPassword" type="password" id="userPassword" name="password"
+              autocomplete="new-password"
               [ngClass]="{'border-danger': signUpForm.get('userPassword')?.invalid && signUpForm.get('userPassword')?.touched, 'border-success': signUpForm.get('userPassword')?.valid}"
               class="bg-background border text-text rounded-lg block w-full p-2.5 placeholder:text-text" />
             <div class="error-message">
@@ -41,7 +43,8 @@
             <label for="confirmUserPassword" class="block mb-2 text-sm font-medium text-text">
               {{ 'sign-up.confirm-password' | translate }}
             </label>
-            <input name="confirm-password" type="password" formControlName="confirmUserPassword" id="confirmUserPassword" autocomplete="new-password"
+            <input name="confirm-password" type="password" formControlName="confirmUserPassword"
+              id="confirmUserPassword" autocomplete="new-password"
               [ngClass]="{'border-danger': signUpForm.get('confirmUserPassword')?.invalid && signUpForm.get('confirmUserPassword')?.touched, 'border-success': signUpForm.get('confirmUserPassword')?.valid}"
               class="bg-background border text-text rounded-lg block w-full p-2.5 placeholder:text-text" />
             <div class="error-message">
