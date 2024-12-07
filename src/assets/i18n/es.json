@@ -8,13 +8,12 @@
     "spanish": "Español"
   },
   "sign-up": {
-    "title": "Regístrate",
+    "title": "Crear una cuenta nueva",
     "email": "Correo electrónico",
     "password": "Contraseña",
     "sign-in": "Iniciar sesión",
-    "no-account": "¿Ya tienes una cuenta?",
-    "forgot-password": "¿Olvidaste tu contraseña?",
-    "remember": "Recuérdame"
+    "sign-up": "Registrarse",
+    "have-account": "¿Ya tienes una cuenta?"
   },
   "validation": {
     "email": {

@@ -8,13 +8,12 @@
     "spanish": "Spanish"
   },
   "sign-up": {
-    "title": "Sign Up",
-    "email": "Email Address",
+    "title": "New account",
+    "email": "Email address",
     "password": "Password",
     "sign-in": "Sign in",
-    "no-account": "Already have an account?",
-    "forgot-password": "Forgot password?",
-    "remember": "Remember me"
+    "sign-up": "Sign up",
+    "have-account": "Already have an account?"
   },
   "validation": {
     "email": {
