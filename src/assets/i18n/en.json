@@ -1,0 +1,31 @@
+{
+  "theme-switcher": {
+    "dark": "Change to dark mode",
+    "light": "Change to light mode"
+  },
+  "laguange-dropdown": {
+    "english": "English",
+    "spanish": "Spanish"
+  },
+  "sign-up": {
+    "title": "Sign Up",
+    "email": "Email Address",
+    "password": "Password",
+    "sign-in": "Sign in",
+    "no-account": "Already have an account?",
+    "forgot-password": "Forgot password?",
+    "remember": "Remember me"
+  },
+  "validation": {
+    "email": {
+      "valueMissing": "Please enter your email address.",
+      "typeMismatch": "Please enter a valid email (example@domain.com).",
+      "tooLong": "The email address is too long."
+    },
+    "password": {
+      "valueMissing": "Please enter your password.",
+      "tooShort": "The password must be at least 8 characters long.",
+      "patternMismatch": "The password does not meet security requirements."
+    }
+  }
+}
