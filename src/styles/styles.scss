@@ -9,6 +9,23 @@ html {
   font-family: $font-family;
   padding: $padding;
   margin: 0;
+  padding: 0;
+}
+body {
+  background-color: var(--background-color);
+}
+.bg-background {
+  background-color: var(--background-color);
+}
+
+.shadow {
+  --tw-shadow-color: #bebebe;
+  --tw-shadow: 0 1px 3px 0 rgba(197, 0, 0, 0.1), 0 1px 2px -1px rgba(158, 158, 158, 0.856);
+  --tw-shadow-colored: 0 1px 3px 0 var(--tw-shadow-color), 0 1px 2px -1px var(--tw-shadow-color);
+  box-shadow:
+    -1px 0px 2px 7px #d1d1d152,
+    -1px -1px 4px 6px #0e0e0e00,
+    var(--tw-shadow);
 }
 
 // Default theme
@@ -30,8 +47,31 @@ p {
   color: var(--text-color);
 }
 
-body {
-  background-color: var(--background-color);
+.text-danger {
+  color: var(--danger-color);
+  animation: blink 1s 3;
+}
+
+.border-danger {
+  border-color: var(--danger-color);
+}
+
+.border-success {
+  border-color: var(--success-color);
+}
+
+.card-border {
+  border-color: var(--card-border-color);
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.2;
+  }
 }
 
 button {
@@ -69,6 +109,15 @@ button.danger {
   &:active {
     background-color: var(--active-danger);
   }
+}
+
+.button-invalid {
+  background-color: var(--disabled-color);
+  cursor: not-allowed;
+}
+
+.button-invalid:hover {
+  background-color: var(--disabled-color);
 }
 
 a {

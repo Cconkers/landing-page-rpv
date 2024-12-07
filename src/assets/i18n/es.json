@@ -11,20 +11,19 @@
     "title": "Crear una cuenta nueva",
     "email": "Correo electrónico",
     "password": "Contraseña",
+    "confirm-password": "Confirmar contraseña",
     "sign-in": "Iniciar sesión",
     "sign-up": "Registrarse",
     "have-account": "¿Ya tienes una cuenta?"
   },
   "validation": {
-    "email": {
-      "valueMissing": "Por favor, introduce tu correo electrónico.",
-      "typeMismatch": "Por favor, introduce un correo válido (ejemplo@dominio.com).",
-      "tooLong": "El correo electrónico es demasiado largo."
-    },
-    "password": {
-      "valueMissing": "Por favor, introduce tu contraseña.",
-      "tooShort": "La contraseña debe tener al menos 8 caracteres.",
-      "patternMismatch": "La contraseña no cumple con los requisitos de seguridad."
-    }
+    "required": "Este campo es obligatorio.",
+    "email": "Por favor, introduce un correo válido.",
+    "minlength": "Debe tener al menos {{requiredLength}} caracteres (actual: {{actualLength}}).",
+    "strongPassword": "La contraseña debe incluir mayúsculas, minúsculas y números.",
+    "matchPasswords": "Las contraseñas no coinciden.",
+    "minValue": "El valor debe ser mayor o igual a {{min}}.",
+    "maxValue": "El valor debe ser menor o igual a {{max}}.",
+    "range": "El valor debe estar entre {{min}} y {{max}} (actual: {{actual}})."
   }
 }

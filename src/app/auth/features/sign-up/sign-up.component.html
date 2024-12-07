@@ -1,44 +1,59 @@
 <section class="bg-background text-text m-10">
-  <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto lg:py-0">
+  <div class="flex flex-col items-center justify-center px-6 mx-auto lg:py-0">
     <div class="w-full bg-background text-text rounded-lg shadow border md:mt-0 sm:max-w-md xl:p-0">
-      <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
+      <div class="p-6 space-y-4 md:space-y-6 sm:p-8 card-border">
         <h1 class="text-xl font-bold leading-tight tracking-tight text-primary md:text-2xl">
           {{ 'sign-up.title' | translate }}
         </h1>
-        <form class="space-y-4 md:space-y-6" action="#">
+        <form autocomplete="on" class="space-y-4 md:space-y-6" [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
           <!-- Email Field -->
           <div>
-            <label for="email" class="block mb-2 text-sm font-medium text-text">
+            <label for="userEmail" class="block mb-2 text-sm font-medium text-text">
               {{ 'sign-up.email' | translate }}
             </label>
-            <input type="email" name="email" id="email"
-              class="bg-background border text-text rounded-lg block w-full p-2.5 placeholder:text-text"
-              placeholder="name@company.com" required (invalid)="setCustomValidity($event)"
-              (input)="resetCustomValidity($event)" />
-            @if(errorMessage['email']){
-            <div class="text-danger blink">
-              {{ errorMessage['email'] | translate }}
+            <input type="email" autocomplete="email" name="email"
+              [ngClass]="{'border-danger': signUpForm.get('userEmail')?.invalid && signUpForm.get('userEmail')?.touched, 'border-success': signUpForm.get('userEmail')?.valid}"
+              formControlName="userEmail"
+              class="bg-background border text-text rounded-lg block w-full p-2.5 placeholder:text-text" />
+            <div class="error-message">
+              @if(signUpForm.get('userEmail')?.invalid && signUpForm.get('userEmail')?.touched){
+              <ng-container *ngTemplateOutlet="errorMessage; context: { controlName: 'userEmail' }"></ng-container>
+              }
             </div>
-            }
           </div>
 
           <!-- Password Field -->
           <div>
-            <label for="password" class="block mb-2 text-sm font-medium text-text">
+            <label for="userPassword" class="block mb-2 text-sm font-medium text-text">
               {{ 'sign-up.password' | translate }}
             </label>
-            <input type="password" name="password" id="password" placeholder="••••••••"
-              class="bg-background border text-text rounded-lg block w-full p-2.5 placeholder:text-text" required
-              minlength="8" (invalid)="setCustomValidity($event)" (input)="resetCustomValidity($event)" />
-            @if(errorMessage['password']){
-            <div class="text-danger blink">
-              {{ errorMessage['password'] | translate }}
+            <input formControlName="userPassword" type="password" id="userPassword" name="password" autocomplete="new-password"
+              [ngClass]="{'border-danger': signUpForm.get('userPassword')?.invalid && signUpForm.get('userPassword')?.touched, 'border-success': signUpForm.get('userPassword')?.valid}"
+              class="bg-background border text-text rounded-lg block w-full p-2.5 placeholder:text-text" />
+            <div class="error-message">
+              @if(signUpForm.get('userPassword')?.invalid && signUpForm.get('userPassword')?.touched){
+              <ng-container *ngTemplateOutlet="errorMessage; context: {  controlName: 'userPassword'  }"></ng-container>
+              }
             </div>
-            }
+          </div>
+          <!-- Confirm Password Field -->
+          <div>
+            <label for="confirmUserPassword" class="block mb-2 text-sm font-medium text-text">
+              {{ 'sign-up.confirm-password' | translate }}
+            </label>
+            <input name="confirm-password" type="password" formControlName="confirmUserPassword" id="confirmUserPassword" autocomplete="new-password"
+              [ngClass]="{'border-danger': signUpForm.get('confirmUserPassword')?.invalid && signUpForm.get('confirmUserPassword')?.touched, 'border-success': signUpForm.get('confirmUserPassword')?.valid}"
+              class="bg-background border text-text rounded-lg block w-full p-2.5 placeholder:text-text" />
+            <div class="error-message">
+              @if(signUpForm.get('confirmUserPassword')?.invalid && signUpForm.get('confirmUserPassword')?.touched){
+              <ng-container
+                *ngTemplateOutlet="errorMessage; context: { controlName: 'confirmUserPassword'  }"></ng-container>
+              }
+            </div>
           </div>
 
           <!-- Submit Button -->
-          <button type="submit"
+          <button [ngClass]="{'bg-primary': signUpForm.valid, 'button-invalid': signUpForm.invalid}" type="submit"
             class="w-full text-background bg-primary font-medium rounded-lg text-sm px-5 py-2.5 text-center">
             {{ 'sign-up.sign-up' | translate }}
           </button>
@@ -53,3 +68,9 @@
     </div>
   </div>
 </section>
+
+<ng-template #errorMessage let-controlName="controlName">
+  <small class="text-danger blink">
+    {{ getValidationMessage(controlName) | translate }}
+  </small>
+</ng-template>

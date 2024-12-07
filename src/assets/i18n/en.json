@@ -11,20 +11,19 @@
     "title": "New account",
     "email": "Email address",
     "password": "Password",
+    "confirm-password": "Confirm password",
     "sign-in": "Sign in",
     "sign-up": "Sign up",
     "have-account": "Already have an account?"
   },
   "validation": {
-    "email": {
-      "valueMissing": "Please enter your email address.",
-      "typeMismatch": "Please enter a valid email (example@domain.com).",
-      "tooLong": "The email address is too long."
-    },
-    "password": {
-      "valueMissing": "Please enter your password.",
-      "tooShort": "The password must be at least 8 characters long.",
-      "patternMismatch": "The password does not meet security requirements."
-    }
+    "required": "This field is required.",
+    "email": "Please enter a valid email.",
+    "minlength": "Must be at least {{requiredLength}} characters (actual: {{actualLength}}).",
+    "strongPassword": "The password must include uppercase, lowercase and numbers.",
+    "matchPasswords": "The passwords do not match.",
+    "minValue": "The value must be greater or equal to {{min}}.",
+    "maxValue": "The value must be less or equal to {{max}}.",
+    "range": "The value must be between {{min}} and {{max}} (actual: {{actual}})."
   }
 }

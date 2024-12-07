@@ -1,4 +1,4 @@
-@import 'variables';
+@import "variables";
 
 // Light theme mixin
 @mixin light-theme {
@@ -7,6 +7,10 @@
   --primary-color: #{$primary-color};
   --secondary-color: #{$secondary-color};
   --danger-color: #{$danger-color};
+  --success-color: #{$success-color};
+  --warning-color: #{$warning-color};
+  --disabled-color: #{$disabled-color};
+  --card-border-color: #{$card-border-color};
 
   // Hover & active effects preprocesados
   --hover-primary: #{darken($primary-color, 20%)};
@@ -15,6 +19,7 @@
   --active-secondary: #{darken($secondary-color, 20%)};
   --hover-danger: #{darken($danger-color, 20%)};
   --active-danger: #{darken($danger-color, 20%)};
+
 }
 
 // Dark theme mixin
@@ -24,6 +29,9 @@
   --primary-color: #{$primary-color};
   --secondary-color: #{$secondary-color};
   --danger-color: #{$danger-color};
+  --success-color: #{$success-color};
+  --warning-color: #{$warning-color};
+  --disabled-color: #{$disabled-color};
 
   // Hover & active effects preprocesados
   --hover-primary: #{lighten($primary-color, 20%)};
@@ -32,4 +40,5 @@
   --active-secondary: #{lighten($secondary-color, 20%)};
   --hover-danger: #{lighten($danger-color, 20%)};
   --active-danger: #{lighten($danger-color, 20%)};
+
 }

@@ -1,53 +1,54 @@
 import { Component } from '@angular/core';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { NgClass, NgTemplateOutlet } from '@angular/common';
+import { GeneralValidators } from '../../../shared/validators/general-validators';
+import { PasswordValidators } from '../../../shared/validators/password-validators';
 
 @Component({
   selector: 'app-sign-up',
   standalone: true,
-  imports: [TranslateModule],
+  imports: [TranslateModule, ReactiveFormsModule, NgTemplateOutlet, NgClass],
   templateUrl: './sign-up.component.html',
   styleUrl: './sign-up.component.scss'
 })
 export class SignUpComponent {
   errorMessage: { [key: string]: string } = {};
+  signUpForm: FormGroup = new FormGroup({
+    userEmail: new FormControl<string | null>(null, [GeneralValidators.required(), GeneralValidators.email()]),
+    userPassword: new FormControl<string | null>(null, [GeneralValidators.required(), GeneralValidators.minLength(8), PasswordValidators.strongPassword()]),
+    confirmUserPassword: new FormControl<string | null>(null, [GeneralValidators.required(), PasswordValidators.matchPasswords('userPassword')]),
+  });
 
-  constructor(private translate: TranslateModule) { }
+  constructor(private translateService: TranslateService) {
+    this.signUpForm.valueChanges.subscribe(() => {
+      // console.log(this.signUpForm);
+    });
+  }
 
-  setCustomValidity(event: Event): void {
-    const input = event.target as HTMLInputElement;
-    const validity = input.validity;
 
-    if (input.name === 'email') {
-      this.errorMessage['email'] = this.getEmailErrorKey(validity);
-    } else if (input.name === 'password') {
-      this.errorMessage['password'] = this.getPasswordErrorKey(validity);
+  onSubmit(): void {
+    if (this.signUpForm.valid) {
+      console.log('Formulario enviado correctamente', this.signUpForm.value);
+    }
+    if (this.signUpForm.invalid) {
+      this.signUpForm.markAllAsTouched();
+      console.log('Errores en el formulario', this.signUpForm.errors);
     }
   }
 
-  resetCustomValidity(event: Event): void {
-    const input = event.target as HTMLInputElement;
-    this.errorMessage[input.name] = ''; // Limpia el mensaje al escribir
-  }
+  getValidationMessage(controlName: string): string {
 
-  getEmailErrorKey(validity: ValidityState): string {
-    if (validity.valueMissing) {
-      return 'validation.email.valueMissing';
-    } else if (validity.typeMismatch) {
-      return 'validation.email.typeMismatch';
-    } else if (validity.tooLong) {
-      return 'validation.email.tooLong';
-    }
-    return '';
-  }
+    const control = this.signUpForm.get(controlName);
+    if (control?.errors) {
 
-  getPasswordErrorKey(validity: ValidityState): string {
-    if (validity.valueMissing) {
-      return 'validation.password.valueMissing';
-    } else if (validity.tooShort) {
-      return 'validation.password.tooShort';
-    } else if (validity.patternMismatch) {
-      return 'validation.password.patternMismatch';
+      const errorKey = Object.keys(control.errors)[0];
+      const error = control.errors[errorKey];
+      console.log(this.translateService.instant(`validation.${errorKey}`, error));
+      return this.translateService.instant(`validation.${errorKey}`, error);
+    } else {
+      return '';
     }
-    return '';
+
   }
 }
