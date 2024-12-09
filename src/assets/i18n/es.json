@@ -25,5 +25,13 @@
     "minValue": "El valor debe ser mayor o igual a {{min}}.",
     "maxValue": "El valor debe ser menor o igual a {{max}}.",
     "range": "El valor debe estar entre {{min}} y {{max}} (actual: {{actual}})."
+  },
+  "toast": {
+    "new-user-created": "Usuario creado correctamente",
+    "missing-fields": "Faltan campos obligatorios"
+  },
+  "tooltip": {
+    "show-password": "Ver contraseña",
+    "hide-password": "Ocultar contraseña"
   }
 }

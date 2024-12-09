@@ -3,13 +3,60 @@
 }
 
 button {
-  transition: background-color 0.3s ease, color 0.3s ease;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
+.selected-language-button {
+  border: 1px solid var(--border-color, #ddd);
+}
+
+.deploy-dropdown {
+  display: block;
+  animation: slide-down 0.15s ease-in-out;
+  width: 100%;
+}
+
+.reagroup-dropdown {
+  animation: slide-up 0.15s ease-in-out;
 }
 
 img {
   transition: transform 0.3s ease;
+  border-radius: 7px;
 }
 
-button:hover img {
-  transform: scale(1.1);
+.drop-option:hover {
+  img,
+  p {
+    transform: scale(1.5);
+    font-weight: bold;
+  }
+  p {
+    transform: translateX(5px);
+  }
+}
+
+@keyframes slide-down {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes slide-up {
+  0% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+  100% {
+    opacity: 0.1;
+    transform: translateY(-10px);
+  }
 }

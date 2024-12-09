@@ -1,0 +1,15 @@
+<div class="toast-container">
+  @for(toast of messages; track toast.id) {
+  <div (click)="toggleExpand(toast)"
+    [ngClass]="{'visible': !toast.removing, 'removing': toast.removing, 'expanded': toast.expanded}"
+    [class]="'toast ' + toast.type" tabindex="-1" aria-labelledby="hs-toast-stack-toggle-update-label">
+    <div class="shrink-0">
+      <img [src]="'/assets/svg/' + toast.type + '-tick.svg'" [alt]="toast.type + ' tick'" class="h-6 w-6" />
+    </div>
+    <div class="paragraph-container">
+      <p #toastText id="hs-toast-stack-toggle-update-label" class="text-text">
+        {{ toast.message }}
+    </div>
+  </div>
+  }
+</div>
