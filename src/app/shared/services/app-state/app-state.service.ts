@@ -80,5 +80,7 @@ export class AppStateService {
     localStorage.setItem('theme', theme);
   }
 
+  setUser(){}
+
 
 }

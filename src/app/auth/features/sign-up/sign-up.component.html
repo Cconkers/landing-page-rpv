@@ -84,7 +84,7 @@
           </button>
           <p class="text-sm font-light text-text">
             {{ 'sign-up.have-account' | translate }}
-            <a href="#" class="font-medium text-primary">
+            <a [routerLink]="['/auth/sign-in']" class="font-medium text-primary cursor-pointer">
               {{ 'sign-up.sign-in' | translate }}
             </a>
           </p>

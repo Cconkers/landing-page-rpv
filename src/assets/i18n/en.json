@@ -16,6 +16,14 @@
     "sign-up": "Sign up",
     "have-account": "Already have an account?"
   },
+  "sign-in": {
+    "title": "Sign in",
+    "email": "Email",
+    "password": "Password",
+    "sign-in": "Log in",
+    "sign-up": "Create an account",
+    "not-have-account": "Don't have an account yet?"
+  },
   "validation": {
     "required": "This field is required.",
     "email": "Please enter a valid email.",
@@ -27,8 +35,10 @@
     "range": "The value must be between {{min}} and {{max}} (actual: {{actual}})."
   },
   "toast": {
+    "login-success": "Loged success, welcome {{userName}}!",
     "new-user-created": "User created successfully",
-    "missing-fields": "Missing required fields"
+    "missing-fields": "Missing required fields",
+    "email-already-exists": "Email already exists in another account"
   },
   "tooltip": {
     "show-password": "Show password",

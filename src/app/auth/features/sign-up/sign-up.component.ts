@@ -1,7 +1,7 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { Component, OnInit } from '@angular/core';
+import { InterpolationParameters, TranslateModule, TranslateService } from '@ngx-translate/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { JsonPipe, NgClass, NgTemplateOutlet } from '@angular/common';
+import { NgClass, NgTemplateOutlet } from '@angular/common';
 import { GeneralValidators } from '../../../shared/validators/general-validators';
 import { PasswordValidators } from '../../../shared/validators/password-validators';
 import { AuthService } from '../auth-service/auth.service';
@@ -9,11 +9,13 @@ import { ToastMessageComponent } from "../../../shared/components/toast-message/
 import { ToastMessageService } from '../../../shared/services/toast-message-service/toast-message.service';
 import { AnimationOptions, LottieComponent } from 'ngx-lottie';
 import { AnimationItem } from 'lottie-web';
+import { IErrorFirebaseResponse } from '../auth-service/firebase-interfaces';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-sign-up',
   standalone: true,
-  imports: [TranslateModule, ReactiveFormsModule, NgTemplateOutlet, NgClass, ToastMessageComponent, ToastMessageComponent, LottieComponent, JsonPipe],
+  imports: [TranslateModule, ReactiveFormsModule, NgTemplateOutlet, NgClass, ToastMessageComponent, ToastMessageComponent, LottieComponent, RouterModule],
   templateUrl: './sign-up.component.html',
   styleUrl: './sign-up.component.scss'
 })
@@ -44,7 +46,7 @@ export class SignUpComponent implements OnInit {
     loop: false,
   };
 
-  constructor(private translateService: TranslateService, private authService: AuthService, private toastService: ToastMessageService, private cdr: ChangeDetectorRef) {
+  constructor(private translateService: TranslateService, private authService: AuthService, private toastService: ToastMessageService) {
   }
   ngOnInit(): void {
     this.tooltipText = {
@@ -100,11 +102,20 @@ export class SignUpComponent implements OnInit {
    */
   onSubmit(): void {
     if (this.signUpForm.valid) {
-      this.authService.signUp(this.signUpForm.value.userEmail, this.signUpForm.value.userPassword).then((user) => {
-        console.log(user);
-        this.showSuccessMessageNewUserCreated();
-      }).catch((error) => {
-        console.log('Error al registrar usuario', error);
+      this.authService.signUp(this.signUpForm.value.userEmail, this.signUpForm.value.userPassword).then((onFullFilled: any) => {
+        console.log(onFullFilled);
+        this.authService.createUserName(this.signUpForm.value.userEmail, onFullFilled.user.uid);
+        this.showSuccessMessage();
+      }).catch((error: any) => {
+        const serializedError: IErrorFirebaseResponse = JSON.parse(JSON.stringify(error));
+        serializedError.customData._tokenResponse.error.errors.forEach((error: any) => {
+          switch (error.message) {
+            case 'EMAIL_EXISTS':
+              this.showErrorMessage('toast.email-already-exists');
+              break;
+          }
+        });
+        console.log('Error: ', error);
       });
     }
     if (this.signUpForm.invalid) {
@@ -132,10 +143,17 @@ export class SignUpComponent implements OnInit {
   /**
    * Show a success message when a new user is created
    */
-  showSuccessMessageNewUserCreated(): void {
+  showSuccessMessage(): void {
     this.toastService.showToast({
       type: 'success',
       message: this.translateService.instant('toast.new-user-created'),
+      duration: 3000,
+    });
+  }
+  showErrorMessage(key: string | string[], interpolateParams?: InterpolationParameters): void {
+    this.toastService.showToast({
+      type: 'error',
+      message: this.translateService.instant(key, interpolateParams),
       duration: 3000,
     });
   }

@@ -1,0 +1,59 @@
+.error-message {
+  margin-top: 7px;
+  margin-bottom: 12px;
+}
+
+.password-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.password-input {
+  padding-right: 50px; // Espacio para el botón del ojo
+}
+
+ng-lottie {
+  position: absolute;
+  right: 10px;
+  top: 7px;
+  cursor: pointer;
+}
+
+.relative {
+  position: relative;
+}
+
+.tooltip {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  font-size: 0.75rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+ng-lottie:hover + .tooltip {
+  animation: fade-in 2s ease-in-out;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes fade-out {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+}

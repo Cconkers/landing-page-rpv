@@ -16,6 +16,14 @@
     "sign-up": "Registrarse",
     "have-account": "¿Ya tienes una cuenta?"
   },
+  "sign-in": {
+    "title": "Iniciar sesión",
+    "email": "Correo electrónico",
+    "password": "Contraseña",
+    "sign-in": "Entrar",
+    "sign-up": "Registrarse",
+    "not-have-account": "¿Aún no tienes una cuenta?"
+  },
   "validation": {
     "required": "Este campo es obligatorio.",
     "email": "Por favor, introduce un correo válido.",
@@ -27,8 +35,10 @@
     "range": "El valor debe estar entre {{min}} y {{max}} (actual: {{actual}})."
   },
   "toast": {
+    "login-success": "Sesión iniciada, Hola {{userName}}!",
     "new-user-created": "Usuario creado correctamente",
-    "missing-fields": "Faltan campos obligatorios"
+    "missing-fields": "Faltan campos obligatorios",
+    "email-already-exists": "La cuenta de correo electrónico ya está en uso en otra cuenta"
   },
   "tooltip": {
     "show-password": "Ver contraseña",
