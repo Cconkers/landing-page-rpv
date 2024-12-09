@@ -16,6 +16,9 @@ export class PasswordValidators {
       if (parent) {
         const matchControl = parent.get(controlToMatch);
         if (matchControl && matchControl.value !== control.value) {
+          console.log(matchControl.value);
+          console.log(control.value);
+
           return { matchPasswords: true };
         }
       }

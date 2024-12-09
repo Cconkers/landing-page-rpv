@@ -1,5 +1,5 @@
 import { Component, effect, ElementRef, QueryList, ViewChildren, } from '@angular/core';
-import { ToastMessage, ToastMessageService } from '../../../services/toast-message-service/toast-message.service';
+import { ToastMessage, ToastMessageService } from '../../services/toast-message-service/toast-message.service';
 import { NgClass } from '@angular/common';
 
 @Component({
@@ -15,8 +15,6 @@ export class ToastMessageComponent {
   constructor(private toastMessageService: ToastMessageService) {
     effect(() => {
       this.messages = this.toastMessageService._messages();
-      // console.log(this.messages);
-
     });
   }
 

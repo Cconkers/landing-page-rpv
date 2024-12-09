@@ -27,6 +27,11 @@
     "range": "The value must be between {{min}} and {{max}} (actual: {{actual}})."
   },
   "toast": {
-    "new-user-created": "User created successfully"
-    }
+    "new-user-created": "User created successfully",
+    "missing-fields": "Missing required fields"
+  },
+  "tooltip": {
+    "show-password": "Show password",
+    "hide-password": "Hide password"
+  }
 }

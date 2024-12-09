@@ -6,7 +6,7 @@
         <h1 class="text-xl font-bold leading-tight tracking-tight text-primary md:text-2xl">
           {{ 'sign-up.title' | translate }}
         </h1>
-        <form autocomplete="on" class="space-y-4 md:space-y-6" [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+        <form autocomplete="on" [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
           <!-- Email Field -->
           <div>
             <label for="userEmail" class="block mb-2 text-sm font-medium text-text">
@@ -24,35 +24,57 @@
           </div>
 
           <!-- Password Field -->
-          <div>
-            <label for="userPassword" class="block mb-2 text-sm font-medium text-text">
-              {{ 'sign-up.password' | translate }}
-            </label>
-            <input formControlName="userPassword" type="password" id="userPassword" name="password"
-              autocomplete="new-password"
+          <label for="userPassword" class="block mb-2 text-sm font-medium text-text">
+            {{ 'sign-up.password' | translate }}
+          </label>
+          <div class="password-container">
+            <input formControlName="userPassword" [type]="showUserPassword ? 'text' : 'password'" id="userPassword"
+              name="password" autocomplete="new-password"
               [ngClass]="{'border-danger': signUpForm.get('userPassword')?.invalid && signUpForm.get('userPassword')?.touched, 'border-success': signUpForm.get('userPassword')?.valid}"
-              class="bg-background border text-text rounded-lg block w-full p-2.5 placeholder:text-text" />
-            <div class="error-message">
-              @if(signUpForm.get('userPassword')?.invalid && signUpForm.get('userPassword')?.touched){
-              <ng-container *ngTemplateOutlet="errorMessage; context: {  controlName: 'userPassword'  }"></ng-container>
-              }
+              class="bg-background border text-text rounded-lg block w-full p-2.5 placeholder:text-text password-input" />
+            <!-- Eye button password input -->
+            <div class="eye-icon" (mouseenter)="showTooltip('userPassword')" (mouseleave)="hideTooltip('userPassword')">
+              <ng-lottie class="cursor-pointer" (animationCreated)="animationPasswordCreated($event)"
+                [options]="lottieOptions" [styles]="{ width: '40px', height: '40px' }"
+                (click)="togglePasswordVisibility('userPassword')" [ngClass]="{ 'open': showUserPassword }"></ng-lottie>
             </div>
+            <!-- Error message -->
+            @if(tooltipVisibility.userPassword){
+            <div class="tooltip absolute -top-8 right-0">{{ tooltipText['userPassword'] }}</div>
+            }
+          </div>
+          <div class="error-message">
+            @if(signUpForm.get('userPassword')?.invalid && signUpForm.get('userPassword')?.touched){
+            <ng-container *ngTemplateOutlet="errorMessage; context: {  controlName: 'userPassword'  }"></ng-container>
+            }
           </div>
           <!-- Confirm Password Field -->
-          <div>
-            <label for="confirmUserPassword" class="block mb-2 text-sm font-medium text-text">
-              {{ 'sign-up.confirm-password' | translate }}
-            </label>
-            <input name="confirm-password" type="password" formControlName="confirmUserPassword"
-              id="confirmUserPassword" autocomplete="new-password"
+          <label for="confirmUserPassword" class="block mb-2 text-sm font-medium text-text">
+            {{ 'sign-up.confirm-password' | translate }}
+          </label>
+          <div class="password-container">
+            <input name="confirm-password" [type]="showUserConfirmPassword ? 'text' : 'password'"
+              formControlName="confirmUserPassword" id="confirmUserPassword" autocomplete="new-password"
               [ngClass]="{'border-danger': signUpForm.get('confirmUserPassword')?.invalid && signUpForm.get('confirmUserPassword')?.touched, 'border-success': signUpForm.get('confirmUserPassword')?.valid}"
-              class="bg-background border text-text rounded-lg block w-full p-2.5 placeholder:text-text" />
-            <div class="error-message">
-              @if(signUpForm.get('confirmUserPassword')?.invalid && signUpForm.get('confirmUserPassword')?.touched){
-              <ng-container
-                *ngTemplateOutlet="errorMessage; context: { controlName: 'confirmUserPassword'  }"></ng-container>
-              }
+              class="bg-background border text-text rounded-lg block w-full p-2.5 placeholder:text-text password-input" />
+            <!-- Eye button confirm password input -->
+            <div class="eye-icon" (mouseenter)="showTooltip('confirmUserPassword')"
+              (mouseleave)="hideTooltip('confirmUserPassword')">
+              <ng-lottie class="cursor-pointer eye-icon" (animationCreated)="animationConfirmPasswordCreated($event)"
+                [options]="lottieOptions" [styles]="{ width: '40px', height: '40px' }"
+                (click)="togglePasswordVisibility('confirmUserPassword')"
+                [ngClass]="{ 'open': showUserConfirmPassword }"></ng-lottie>
             </div>
+            @if(tooltipVisibility.confirmUserPassword){
+            <div class="tooltip absolute -top-8 right-0">{{ tooltipText['confirmUserPassword'] }}</div>
+            }
+            <!-- Error message -->
+          </div>
+          <div class="error-message">
+            @if(signUpForm.get('confirmUserPassword')?.invalid && signUpForm.get('confirmUserPassword')?.touched){
+            <ng-container
+              *ngTemplateOutlet="errorMessage; context: { controlName: 'confirmUserPassword'  }"></ng-container>
+            }
           </div>
 
           <!-- Submit Button -->

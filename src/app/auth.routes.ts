@@ -12,5 +12,9 @@ export const authRoutes: Routes = [
   {
     path: 'sign-up',
     loadComponent: () => import('./auth/features/sign-up/sign-up.component').then(m => m.SignUpComponent)
+  },
+  {
+    path: '**',
+    loadComponent: () => import('./auth/features/sign-up/sign-up.component').then(m => m.SignUpComponent)
   }
 ] as Routes;
