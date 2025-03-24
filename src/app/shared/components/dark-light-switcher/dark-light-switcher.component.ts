@@ -2,11 +2,10 @@ import { Component } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
-  selector: 'app-dark-light-switcher',
-  standalone: true,
-  imports: [TranslateModule],
-  templateUrl: './dark-light-switcher.component.html',
-  styleUrl: './dark-light-switcher.component.scss'
+    selector: 'app-dark-light-switcher',
+    imports: [TranslateModule],
+    templateUrl: './dark-light-switcher.component.html',
+    styleUrl: './dark-light-switcher.component.scss'
 })
 export class DarkLightSwitcherComponent {
   toggleTheme(): void {

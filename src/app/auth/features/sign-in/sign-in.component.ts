@@ -14,12 +14,11 @@ import { RouterModule } from '@angular/router';
 import { AppStateService } from '../../../shared/services/app-state/app-state.service';
 
 @Component({
-  selector: 'app-sign-in',
-  standalone: true,
-  imports: [TranslateModule, ReactiveFormsModule, NgTemplateOutlet, NgClass, ToastMessageComponent, ToastMessageComponent, LottieComponent, RouterModule],
-  providers: [],
-  templateUrl: './sign-in.component.html',
-  styleUrl: './sign-in.component.scss',
+    selector: 'app-sign-in',
+    imports: [TranslateModule, ReactiveFormsModule, NgTemplateOutlet, NgClass, ToastMessageComponent, ToastMessageComponent, LottieComponent, RouterModule],
+    providers: [],
+    templateUrl: './sign-in.component.html',
+    styleUrl: './sign-in.component.scss'
 })
 export class SignInComponent {
   errorMessage: { [key: string]: string } = {};

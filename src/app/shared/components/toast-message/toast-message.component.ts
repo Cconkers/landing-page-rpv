@@ -3,11 +3,10 @@ import { ToastMessage, ToastMessageService } from '../../services/toast-message-
 import { NgClass } from '@angular/common';
 
 @Component({
-  selector: 'app-toast-message',
-  standalone: true,
-  imports: [NgClass],
-  templateUrl: './toast-message.component.html',
-  styleUrl: './toast-message.component.scss'
+    selector: 'app-toast-message',
+    imports: [NgClass],
+    templateUrl: './toast-message.component.html',
+    styleUrl: './toast-message.component.scss'
 })
 export class ToastMessageComponent {
   messages: ToastMessage[] = [];
