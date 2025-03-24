@@ -1,6 +1,8 @@
+@use "sass:color";
+
 // Sass Colors
-$primary-color: #3498db;
-$secondary-color: #2ecc71;
+$primary-color: #3B82F6;
+$secondary-color: #10B981;
 $danger-color: #e74c3c;
 $success-color: #198d4991;
 $warning-color: #f1c40f;
@@ -10,16 +12,16 @@ $disabled-color: #e0e0e0;
 $card-border-color: #c5c5c5;
 
 // Light Theme Colors
-$background-light: #ffffff;
-$text-light: #000000;
-$hover-light: lighten($background-light, 10%);
-$active-light: lighten($background-light, 15%);
+$background-light: #FFFFFF;
+$text-light: #374151;
+$hover-light: color.adjust($background-light, $lightness: 10%);
+$active-light: color.adjust($background-light, $lightness: 15%);
 
 // Dark Theme Colors
-$background-dark: #121212;
-$text-dark: #f5f5f5;
-$hover-dark: darken($background-dark, 10%);
-$active-dark: darken($background-dark, 15%);
+$background-dark: #1F2937;
+$text-dark: #F3F4F6;
+$hover-dark: color.adjust($background-dark, $lightness: -10%);
+$active-dark: color.adjust($background-dark, $lightness: -15%);
 
 // Fonts
 $font-family: "Roboto", sans-serif;

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from '@angular/fire/auth';
+import { Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, FacebookAuthProvider } from '@angular/fire/auth';
 import { Firestore, doc, setDoc } from '@angular/fire/firestore';
 
 interface User {
@@ -21,6 +21,16 @@ export class AuthService {
 
   signIn(email: string, password: string) {
     return signInWithEmailAndPassword(this._auth, email, password);
+  }
+
+  async signInWithGoogle() {
+    const provider = new GoogleAuthProvider();
+    return signInWithPopup(this._auth, provider);
+  }
+
+  async signInWithFacebook() {
+    const provider = new FacebookAuthProvider();
+    return signInWithPopup(this._auth, provider);
   }
 
   createUserName(userName: string, userId: string) {

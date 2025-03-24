@@ -14,7 +14,8 @@ import { RouterModule } from '@angular/router';
 
 @Component({
     selector: 'app-sign-up',
-    imports: [TranslateModule, ReactiveFormsModule, NgTemplateOutlet, NgClass, ToastMessageComponent, ToastMessageComponent, LottieComponent, RouterModule],
+    standalone: true,
+    imports: [TranslateModule, ReactiveFormsModule, NgTemplateOutlet, NgClass, ToastMessageComponent, LottieComponent, RouterModule],
     templateUrl: './sign-up.component.html',
     styleUrl: './sign-up.component.scss'
 })
@@ -44,6 +45,8 @@ export class SignUpComponent implements OnInit {
     autoplay: false,
     loop: false,
   };
+
+  passwordStrength = 0;
 
   constructor(private translateService: TranslateService, private authService: AuthService, private toastService: ToastMessageService) {
   }
@@ -167,5 +170,14 @@ export class SignUpComponent implements OnInit {
         duration: 3000,
       });
     }
+  }
+
+  calculatePasswordStrength(password: string): void {
+    let strength = 0;
+    if (password?.length >= 8) strength += 25;
+    if (/[A-Z]/.test(password)) strength += 25;
+    if (/[a-z]/.test(password)) strength += 25;
+    if (/[0-9]/.test(password)) strength += 25;
+    this.passwordStrength = strength;
   }
 }

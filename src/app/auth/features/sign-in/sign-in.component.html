@@ -40,7 +40,7 @@
             </div>
             <!-- Error message -->
             @if(tooltipVisibility.userPassword){
-            <div class="tooltip absolute -top-8 right-0">{{ tooltipText['userPassword'] }}</div>
+              <div class="tooltip absolute -top-8 right-0">{{ tooltipText['userPassword'] }}</div>
             }
           </div>
           <div class="error-message">
@@ -49,11 +49,50 @@
             }
           </div>
 
+          <!-- Remember Me -->
+          <div class="flex items-center mb-4">
+            <input type="checkbox" formControlName="rememberMe" id="rememberMe" class="w-4 h-4 text-primary bg-background border rounded focus:ring-primary">
+            <label for="rememberMe" class="ml-2 text-sm font-medium text-text">{{ 'sign-in.remember-me' | translate }}</label>
+          </div>
+
           <!-- Submit Button -->
           <button [ngClass]="{'bg-primary': signUpForm.valid, 'button-invalid': signUpForm.invalid}" type="submit"
-            class="w-full text-background bg-primary font-medium rounded-lg text-sm px-5 py-2.5 text-center">
-            {{ 'sign-in.sign-in' | translate }}
+            [disabled]="isLoading"
+            class="w-full text-background bg-primary font-medium rounded-lg text-sm px-5 py-2.5 text-center relative">
+            <span>{{ 'sign-in.sign-in' | translate }}</span>
+            @if(isLoading){
+              <div class="absolute inset-0 flex items-center justify-center">
+                <div class="animate-spin rounded-full h-5 w-5 border-b-2 border-background"></div>
+              </div>
+            }
           </button>
+
+          <!-- Social Login -->
+          <div class="mt-4">
+            <div class="relative">
+              <div class="absolute inset-0 flex items-center">
+                <div class="w-full border-t border-text"></div>
+              </div>
+              <div class="relative flex justify-center text-sm">
+                <span class="px-2 bg-background text-text">{{ 'sign-in.or-continue-with' | translate }}</span>
+              </div>
+            </div>
+
+            <div class="mt-4 grid grid-cols-2 gap-3">
+              <button type="button" (click)="signInWithGoogle()" [disabled]="isLoading"
+                class="w-full inline-flex justify-center py-2 px-4 border border-text rounded-md shadow-sm bg-background text-sm font-medium text-text hover:bg-gray-50">
+                <img class="h-5 w-5" src="assets/icons/google.svg" alt="Google" />
+                <span class="ml-2">{{ 'sign-in.google' | translate }}</span>
+              </button>
+
+              <button type="button" (click)="signInWithFacebook()" [disabled]="isLoading"
+                class="w-full inline-flex justify-center py-2 px-4 border border-text rounded-md shadow-sm bg-background text-sm font-medium text-text hover:bg-gray-50">
+                <img class="h-5 w-5" src="assets/icons/facebook.svg" alt="Facebook" />
+                <span class="ml-2">{{ 'sign-in.facebook' | translate }}</span>
+              </button>
+            </div>
+          </div>
+
           <p class="text-sm font-light text-text">
             {{ 'sign-in.not-have-account' | translate }}
             <a [routerLink]="['/auth/sign-up']" class="font-medium text-primary cursor-pointer">

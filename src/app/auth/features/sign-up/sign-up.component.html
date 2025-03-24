@@ -1,9 +1,9 @@
 <app-toast-message></app-toast-message>
-<section class="bg-background text-text m-10">
-  <div class="flex flex-col items-center justify-center px-6 mx-auto lg:py-0">
-    <div class="w-full bg-background text-text rounded-lg shadow border md:mt-0 sm:max-w-md xl:p-0">
-      <div class="p-6 space-y-4 md:space-y-6 sm:p-8 card-border">
-        <h1 class="text-xl font-bold leading-tight tracking-tight text-primary md:text-2xl">
+<section class="bg-background text-text min-h-screen flex items-center justify-center p-4">
+  <div class="w-full max-w-md">
+    <div class="bg-background rounded-xl shadow-lg border border-opacity-20 overflow-hidden transition-all duration-300 hover:shadow-xl">
+      <div class="p-8 space-y-6">
+        <h1 class="text-2xl font-bold text-primary text-center mb-8">
           {{ 'sign-up.title' | translate }}
         </h1>
         <form autocomplete="on" [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
@@ -15,7 +15,7 @@
             <input type="email" autocomplete="email" name="email" id="userEmail"
               [ngClass]="{'border-danger': signUpForm.get('userEmail')?.invalid && signUpForm.get('userEmail')?.touched, 'border-success': signUpForm.get('userEmail')?.valid}"
               formControlName="userEmail"
-              class="bg-background border text-text rounded-lg block w-full p-2.5 placeholder:text-text" />
+              class="bg-background border text-text rounded-lg block w-full p-3 transition-all duration-200 focus:ring-2 focus:ring-primary focus:border-transparent" />
             <div class="error-message">
               @if(signUpForm.get('userEmail')?.invalid && signUpForm.get('userEmail')?.touched){
               <ng-container *ngTemplateOutlet="errorMessage; context: { controlName: 'userEmail' }"></ng-container>
@@ -27,21 +27,49 @@
           <label for="userPassword" class="block mb-2 text-sm font-medium text-text">
             {{ 'sign-up.password' | translate }}
           </label>
-          <div class="password-container">
+          <div class="password-container relative">
             <input formControlName="userPassword" [type]="showUserPassword ? 'text' : 'password'" id="userPassword"
               name="password" autocomplete="new-password"
+              (input)="calculatePasswordStrength(signUpForm.get('userPassword')?.value)"
               [ngClass]="{'border-danger': signUpForm.get('userPassword')?.invalid && signUpForm.get('userPassword')?.touched, 'border-success': signUpForm.get('userPassword')?.valid}"
-              class="bg-background border text-text rounded-lg block w-full p-2.5 placeholder:text-text password-input" />
+              class="bg-background border text-text rounded-lg block w-full p-3 pr-12 transition-all duration-200 focus:ring-2 focus:ring-primary focus:border-transparent" />
+
             <!-- Eye button password input -->
-            <div class="eye-icon" (mouseenter)="showTooltip('userPassword')" (mouseleave)="hideTooltip('userPassword')">
+            <div class="absolute right-3 top-1/2 -translate-y-1/2 flex items-center justify-center h-5 w-5">
               <ng-lottie class="cursor-pointer" (animationCreated)="animationPasswordCreated($event)"
-                [options]="lottieOptions" [styles]="{ width: '40px', height: '40px' }"
+                [options]="lottieOptions" [styles]="{ width: '24px', height: '24px' }"
                 (click)="togglePasswordVisibility('userPassword')" [ngClass]="{ 'open': showUserPassword }"></ng-lottie>
             </div>
-            <!-- Error message -->
-            @if(tooltipVisibility.userPassword){
-            <div class="tooltip absolute -top-8 right-0">{{ tooltipText['userPassword'] }}</div>
-            }
+
+            <!-- Password strength indicator -->
+            <div class="mt-2" [class.hidden]="!signUpForm.get('userPassword')?.value">
+              <div class="h-1 w-full bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
+                <div class="h-1 rounded-full transition-all duration-300"
+                  [ngClass]="{
+                    'bg-red-500 dark:bg-red-600': passwordStrength <= 25,
+                    'bg-yellow-500 dark:bg-yellow-600': passwordStrength > 25 && passwordStrength <= 50,
+                    'bg-blue-500 dark:bg-blue-600': passwordStrength > 50 && passwordStrength <= 75,
+                    'bg-green-500 dark:bg-green-600': passwordStrength > 75
+                  }"
+                  [style.width.%]="passwordStrength">
+                </div>
+              </div>
+              <div class="flex justify-between mt-1">
+                <small class="text-xs" [ngClass]="{
+                  'text-red-500 dark:text-red-400': passwordStrength <= 25,
+                  'text-yellow-500 dark:text-yellow-400': passwordStrength > 25 && passwordStrength <= 50,
+                  'text-blue-500 dark:text-blue-400': passwordStrength > 50 && passwordStrength <= 75,
+                  'text-green-500 dark:text-green-400': passwordStrength > 75
+                }">
+                  {{
+                    passwordStrength <= 25 ? 'Muy débil' :
+                    passwordStrength <= 50 ? 'Débil' :
+                    passwordStrength <= 75 ? 'Media' : 'Fuerte'
+                  }}
+                </small>
+                <small class="text-xs text-gray-500">{{ passwordStrength }}%</small>
+              </div>
+            </div>
           </div>
           <div class="error-message">
             @if(signUpForm.get('userPassword')?.invalid && signUpForm.get('userPassword')?.touched){
@@ -56,7 +84,7 @@
             <input name="confirm-password" [type]="showUserConfirmPassword ? 'text' : 'password'"
               formControlName="confirmUserPassword" id="confirmUserPassword" autocomplete="new-password"
               [ngClass]="{'border-danger': signUpForm.get('confirmUserPassword')?.invalid && signUpForm.get('confirmUserPassword')?.touched, 'border-success': signUpForm.get('confirmUserPassword')?.valid}"
-              class="bg-background border text-text rounded-lg block w-full p-2.5 placeholder:text-text password-input" />
+              class="bg-background border text-text rounded-lg block w-full p-3 transition-all duration-200 focus:ring-2 focus:ring-primary focus:border-transparent" />
             <!-- Eye button confirm password input -->
             <div class="eye-icon" (mouseenter)="showTooltip('confirmUserPassword')"
               (mouseleave)="hideTooltip('confirmUserPassword')">
@@ -78,8 +106,8 @@
           </div>
 
           <!-- Submit Button -->
-          <button [ngClass]="{'bg-primary': signUpForm.valid, 'button-invalid': signUpForm.invalid}" type="submit"
-            class="w-full text-background bg-primary font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+          <button [ngClass]="{'bg-primary hover:bg-primary/90': signUpForm.valid, 'button-invalid': signUpForm.invalid}" type="submit"
+            class="w-full text-background font-medium rounded-lg text-sm px-5 py-3 text-center transition-all duration-200 transform hover:scale-[1.02] active:scale-[0.98]">
             {{ 'sign-up.sign-up' | translate }}
           </button>
           <p class="text-sm font-light text-text">

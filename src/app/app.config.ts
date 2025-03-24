@@ -15,6 +15,7 @@ import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 // ngx-translate imports
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { TranslateModule, TranslateLoader } from "@ngx-translate/core";
+
 const httpLoaderFactory: (http: HttpClient) => TranslateHttpLoader = (http: HttpClient) =>
   new TranslateHttpLoader(http, './assets/i18n/', '.json');
 

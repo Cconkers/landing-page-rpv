@@ -22,7 +22,12 @@
     "password": "Contraseña",
     "sign-in": "Entrar",
     "sign-up": "Registrarse",
-    "not-have-account": "¿Aún no tienes una cuenta?"
+    "not-have-account": "¿Aún no tienes una cuenta?",
+    "remember-me": "Recordarme",
+    "or-continue-with": "O continuar con",
+    "google": "Google",
+    "facebook": "Facebook",
+    "password-strength": "Fuerza de la contraseña: {{strength}}%"
   },
   "validation": {
     "required": "Este campo es obligatorio.",
@@ -38,7 +43,8 @@
     "login-success": "Sesión iniciada, Hola {{userName}}!",
     "new-user-created": "Usuario creado correctamente",
     "missing-fields": "Faltan campos obligatorios",
-    "email-already-exists": "La cuenta de correo electrónico ya está en uso en otra cuenta"
+    "email-already-exists": "La cuenta de correo electrónico ya está en uso en otra cuenta",
+    "social-login-error": "Error al iniciar sesión con la red social"
   },
   "tooltip": {
     "show-password": "Ver contraseña",

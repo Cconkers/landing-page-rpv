@@ -14,17 +14,29 @@ import { RouterModule } from '@angular/router';
 import { AppStateService } from '../../../shared/services/app-state/app-state.service';
 
 @Component({
-    selector: 'app-sign-in',
-    imports: [TranslateModule, ReactiveFormsModule, NgTemplateOutlet, NgClass, ToastMessageComponent, ToastMessageComponent, LottieComponent, RouterModule],
-    providers: [],
-    templateUrl: './sign-in.component.html',
-    styleUrl: './sign-in.component.scss'
+  selector: 'app-sign-in',
+  standalone: true,
+  imports: [
+    TranslateModule,
+    ReactiveFormsModule,
+    NgTemplateOutlet,
+    NgClass,
+    ToastMessageComponent,
+    LottieComponent,
+    RouterModule
+  ],
+  providers: [],
+  templateUrl: './sign-in.component.html',
+  styleUrl: './sign-in.component.scss',
 })
 export class SignInComponent {
   errorMessage: { [key: string]: string } = {};
+  isLoading = false;
+  passwordStrength = 0;
   signUpForm: FormGroup = new FormGroup({
     userEmail: new FormControl<string | null>(null, [GeneralValidators.required(), GeneralValidators.email()]),
     userPassword: new FormControl<string | null>(null, [GeneralValidators.required(), GeneralValidators.minLength(8), PasswordValidators.strongPassword()]),
+    rememberMe: new FormControl<boolean>(false),
   });
 
   // Eye animation password input
@@ -44,12 +56,28 @@ export class SignInComponent {
     loop: false,
   };
 
-  constructor(private translateService: TranslateService, private authService: AuthService, private toastService: ToastMessageService, private appStateService: AppStateService) {
-  }
+  constructor(
+    private translateService: TranslateService,
+    private authService: AuthService,
+    private toastService: ToastMessageService,
+    private appStateService: AppStateService
+  ) {}
+
   ngOnInit(): void {
     this.tooltipText = {
       userPassword: this.translateService.instant('tooltip.show-password')
     };
+    // Check if remember me was previously set
+    const rememberMe = localStorage.getItem('rememberMe');
+    if (rememberMe === 'true') {
+      const savedEmail = localStorage.getItem('userEmail');
+      if (savedEmail) {
+        this.signUpForm.patchValue({
+          userEmail: savedEmail,
+          rememberMe: true
+        });
+      }
+    }
   }
 
   showTooltip(tooltipToShow: string) {
@@ -59,7 +87,6 @@ export class SignInComponent {
   hideTooltip(tooltipToShow: string) {
     this.tooltipVisibility[tooltipToShow as keyof typeof this.tooltipVisibility] = false;
   }
-
 
   animationPasswordCreated(animationItem: AnimationItem): void {
     this.animationPasswordEye = animationItem;
@@ -84,16 +111,32 @@ export class SignInComponent {
     }
   }
 
+  calculatePasswordStrength(password: string): void {
+    let strength = 0;
+    if (password.length >= 8) strength += 25;
+    if (/[A-Z]/.test(password)) strength += 25;
+    if (/[a-z]/.test(password)) strength += 25;
+    if (/[0-9]/.test(password)) strength += 25;
+    this.passwordStrength = strength;
+  }
+
   /**
    * Handle the form submission and create a new user
    */
   onSubmit(): void {
     if (this.signUpForm.valid) {
+      this.isLoading = true;
       this.authService.signIn(this.signUpForm.value.userEmail, this.signUpForm.value.userPassword).then(
         (singInResponse) => {
           console.log(singInResponse);
           const userId = singInResponse.user.uid;
-
+          if (this.signUpForm.get('rememberMe')?.value) {
+            localStorage.setItem('rememberMe', 'true');
+            localStorage.setItem('userEmail', this.signUpForm.value.userEmail);
+          } else {
+            localStorage.removeItem('rememberMe');
+            localStorage.removeItem('userEmail');
+          }
           this.showSuccessMessage('toast.login-success', { userName: singInResponse.user.displayName });
         }).catch((error: string) => {
           const serializedError: IErrorFirebaseResponse = JSON.parse(JSON.stringify(error));
@@ -104,6 +147,8 @@ export class SignInComponent {
                 break;
             }
           });
+        }).finally(() => {
+          this.isLoading = false;
         });
     }
     if (this.signUpForm.invalid) {
@@ -112,6 +157,29 @@ export class SignInComponent {
     }
   }
 
+  async signInWithGoogle(): Promise<void> {
+    try {
+      this.isLoading = true;
+      const result = await this.authService.signInWithGoogle();
+      this.showSuccessMessage('toast.login-success', { userName: result.user.displayName });
+    } catch (error) {
+      this.showErrorMessage('toast.social-login-error');
+    } finally {
+      this.isLoading = false;
+    }
+  }
+
+  async signInWithFacebook(): Promise<void> {
+    try {
+      this.isLoading = true;
+      const result = await this.authService.signInWithFacebook();
+      this.showSuccessMessage('toast.login-success', { userName: result.user.displayName });
+    } catch (error) {
+      this.showErrorMessage('toast.social-login-error');
+    } finally {
+      this.isLoading = false;
+    }
+  }
 
   /**
    *  Get the validation message for a specific control
@@ -139,6 +207,7 @@ export class SignInComponent {
       duration: 3000,
     });
   }
+
   showErrorMessage(key: string | string[], interpolateParams?: InterpolationParameters): void {
     this.toastService.showToast({
       type: 'error',

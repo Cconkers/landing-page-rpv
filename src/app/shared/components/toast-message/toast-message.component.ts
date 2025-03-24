@@ -1,9 +1,10 @@
-import { Component, effect, ElementRef, QueryList, ViewChildren, } from '@angular/core';
+import { Component, effect, ElementRef, QueryList, ViewChildren } from '@angular/core';
 import { ToastMessage, ToastMessageService } from '../../services/toast-message-service/toast-message.service';
 import { NgClass } from '@angular/common';
 
 @Component({
     selector: 'app-toast-message',
+    standalone: true,
     imports: [NgClass],
     templateUrl: './toast-message.component.html',
     styleUrl: './toast-message.component.scss'
