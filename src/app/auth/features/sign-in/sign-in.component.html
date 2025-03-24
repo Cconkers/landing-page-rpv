@@ -1,0 +1,112 @@
+<app-toast-message></app-toast-message>
+<section class="bg-background text-text m-10">
+  <div class="flex flex-col items-center justify-center px-6 mx-auto lg:py-0">
+    <div class="w-full bg-background text-text rounded-lg shadow border md:mt-0 sm:max-w-md xl:p-0">
+      <div class="p-6 space-y-4 md:space-y-6 sm:p-8 card-border">
+        <h1 class="text-xl font-bold leading-tight tracking-tight text-primary md:text-2xl">
+          {{ 'sign-in.title' | translate }}
+        </h1>
+        <form autocomplete="on" [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+          <!-- Email Field -->
+          <div>
+            <label for="userEmail" class="block mb-2 text-sm font-medium text-text">
+              {{ 'sign-in.email' | translate }}
+            </label>
+            <input type="email" autocomplete="email" name="email" id="userEmail"
+              [ngClass]="{'border-danger': signUpForm.get('userEmail')?.invalid && signUpForm.get('userEmail')?.touched, 'border-success': signUpForm.get('userEmail')?.valid}"
+              formControlName="userEmail"
+              class="bg-background border text-text rounded-lg block w-full p-2.5 placeholder:text-text" />
+            <div class="error-message">
+              @if(signUpForm.get('userEmail')?.invalid && signUpForm.get('userEmail')?.touched){
+              <ng-container *ngTemplateOutlet="errorMessage; context: { controlName: 'userEmail' }"></ng-container>
+              }
+            </div>
+          </div>
+
+          <!-- Password Field -->
+          <label for="userPassword" class="block mb-2 text-sm font-medium text-text">
+            {{ 'sign-in.password' | translate }}
+          </label>
+          <div class="password-container">
+            <input formControlName="userPassword" [type]="showUserPassword ? 'text' : 'password'" id="userPassword"
+              name="password" autocomplete="new-password"
+              [ngClass]="{'border-danger': signUpForm.get('userPassword')?.invalid && signUpForm.get('userPassword')?.touched, 'border-success': signUpForm.get('userPassword')?.valid}"
+              class="bg-background border text-text rounded-lg block w-full p-2.5 placeholder:text-text password-input" />
+            <!-- Eye button password input -->
+            <div class="eye-icon" (mouseenter)="showTooltip('userPassword')" (mouseleave)="hideTooltip('userPassword')">
+              <ng-lottie class="cursor-pointer" (animationCreated)="animationPasswordCreated($event)"
+                [options]="lottieOptions" [styles]="{ width: '40px', height: '40px' }"
+                (click)="togglePasswordVisibility('userPassword')" [ngClass]="{ 'open': showUserPassword }"></ng-lottie>
+            </div>
+            <!-- Error message -->
+            @if(tooltipVisibility.userPassword){
+              <div class="tooltip absolute -top-8 right-0">{{ tooltipText['userPassword'] }}</div>
+            }
+          </div>
+          <div class="error-message">
+            @if(signUpForm.get('userPassword')?.invalid && signUpForm.get('userPassword')?.touched){
+            <ng-container *ngTemplateOutlet="errorMessage; context: {  controlName: 'userPassword'  }"></ng-container>
+            }
+          </div>
+
+          <!-- Remember Me -->
+          <div class="flex items-center mb-4">
+            <input type="checkbox" formControlName="rememberMe" id="rememberMe" class="w-4 h-4 text-primary bg-background border rounded focus:ring-primary">
+            <label for="rememberMe" class="ml-2 text-sm font-medium text-text">{{ 'sign-in.remember-me' | translate }}</label>
+          </div>
+
+          <!-- Submit Button -->
+          <button [ngClass]="{'bg-primary': signUpForm.valid, 'button-invalid': signUpForm.invalid}" type="submit"
+            [disabled]="isLoading"
+            class="w-full text-background bg-primary font-medium rounded-lg text-sm px-5 py-2.5 text-center relative">
+            <span>{{ 'sign-in.sign-in' | translate }}</span>
+            @if(isLoading){
+              <div class="absolute inset-0 flex items-center justify-center">
+                <div class="animate-spin rounded-full h-5 w-5 border-b-2 border-background"></div>
+              </div>
+            }
+          </button>
+
+          <!-- Social Login -->
+          <div class="mt-4">
+            <div class="relative">
+              <div class="absolute inset-0 flex items-center">
+                <div class="w-full border-t border-text"></div>
+              </div>
+              <div class="relative flex justify-center text-sm">
+                <span class="px-2 bg-background text-text">{{ 'sign-in.or-continue-with' | translate }}</span>
+              </div>
+            </div>
+
+            <div class="mt-4 grid grid-cols-2 gap-3">
+              <button type="button" (click)="signInWithGoogle()" [disabled]="isLoading"
+                class="w-full inline-flex justify-center py-2 px-4 border border-text rounded-md shadow-sm bg-background text-sm font-medium text-text hover:bg-gray-50">
+                <img class="h-5 w-5" src="assets/icons/google.svg" alt="Google" />
+                <span class="ml-2">{{ 'sign-in.google' | translate }}</span>
+              </button>
+
+              <button type="button" (click)="signInWithFacebook()" [disabled]="isLoading"
+                class="w-full inline-flex justify-center py-2 px-4 border border-text rounded-md shadow-sm bg-background text-sm font-medium text-text hover:bg-gray-50">
+                <img class="h-5 w-5" src="assets/icons/facebook.svg" alt="Facebook" />
+                <span class="ml-2">{{ 'sign-in.facebook' | translate }}</span>
+              </button>
+            </div>
+          </div>
+
+          <p class="text-sm font-light text-text">
+            {{ 'sign-in.not-have-account' | translate }}
+            <a [routerLink]="['/auth/sign-up']" class="font-medium text-primary cursor-pointer">
+              {{ 'sign-in.sign-up' | translate }}
+            </a>
+          </p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<ng-template #errorMessage let-controlName="controlName">
+  <small class="text-danger blink">
+    {{ getValidationMessage(controlName) | translate }}
+  </small>
+</ng-template>

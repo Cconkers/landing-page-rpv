@@ -1,44 +1,42 @@
-@import "variables";
+@use "sass:color";
+@use "variables" as *;
+
+:root {
+  // Theme colors
+  --primary: #{$primary-color};
+  --secondary: #{$secondary-color};
+  --danger: #{$danger-color};
+  --warning: #{$warning-color};
+  --success: #{$success-color};
+  --disabled: #{$disabled-color};
+}
 
 // Light theme mixin
 @mixin light-theme {
   --background-color: #{$background-light};
   --text-color: #{$text-light};
-  --primary-color: #{$primary-color};
-  --secondary-color: #{$secondary-color};
-  --danger-color: #{$danger-color};
-  --success-color: #{$success-color};
-  --warning-color: #{$warning-color};
-  --disabled-color: #{$disabled-color};
   --card-border-color: #{$card-border-color};
 
-  // Hover & active effects preprocesados
-  --hover-primary: #{darken($primary-color, 20%)};
-  --hover-secondary: #{darken($secondary-color, 20%)};
-  --active-primary: #{darken($primary-color, 20%)};
-  --active-secondary: #{darken($secondary-color, 20%)};
-  --hover-danger: #{darken($danger-color, 20%)};
-  --active-danger: #{darken($danger-color, 20%)};
-
+  // Interactive states
+  --hover-primary: #{color.adjust($primary-color, $lightness: -20%)};
+  --hover-secondary: #{color.adjust($secondary-color, $lightness: -20%)};
+  --active-primary: #{color.adjust($primary-color, $lightness: -30%)};
+  --active-secondary: #{color.adjust($secondary-color, $lightness: -30%)};
+  --hover-danger: #{color.adjust($danger-color, $lightness: -20%)};
+  --active-danger: #{color.adjust($danger-color, $lightness: -30%)};
 }
 
 // Dark theme mixin
 @mixin dark-theme {
   --background-color: #{$background-dark};
   --text-color: #{$text-dark};
-  --primary-color: #{$primary-color};
-  --secondary-color: #{$secondary-color};
-  --danger-color: #{$danger-color};
-  --success-color: #{$success-color};
-  --warning-color: #{$warning-color};
-  --disabled-color: #{$disabled-color};
+  --card-border-color: #{color.adjust($card-border-color, $lightness: -30%)};
 
-  // Hover & active effects preprocesados
-  --hover-primary: #{lighten($primary-color, 20%)};
-  --hover-secondary: #{lighten($secondary-color, 20%)};
-  --active-primary: #{lighten($primary-color, 20%)};
-  --active-secondary: #{lighten($secondary-color, 20%)};
-  --hover-danger: #{lighten($danger-color, 20%)};
-  --active-danger: #{lighten($danger-color, 20%)};
-
+  // Interactive states
+  --hover-primary: #{color.adjust($primary-color, $lightness: 20%)};
+  --hover-secondary: #{color.adjust($secondary-color, $lightness: 20%)};
+  --active-primary: #{color.adjust($primary-color, $lightness: 30%)};
+  --active-secondary: #{color.adjust($secondary-color, $lightness: 30%)};
+  --hover-danger: #{color.adjust($danger-color, $lightness: 20%)};
+  --active-danger: #{color.adjust($danger-color, $lightness: 30%)};
 }

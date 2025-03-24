@@ -3,11 +3,10 @@ import { DarkLightSwitcherComponent } from '../dark-light-switcher/dark-light-sw
 import { LanguageDropdownComponent } from '../language-dropdown/language-dropdown.component';
 
 @Component({
-  selector: 'app-navbar',
-  standalone: true,
-  imports: [DarkLightSwitcherComponent, LanguageDropdownComponent],
-  templateUrl: './navbar.component.html',
-  styleUrl: './navbar.component.scss'
+    selector: 'app-navbar',
+    imports: [DarkLightSwitcherComponent, LanguageDropdownComponent],
+    templateUrl: './navbar.component.html',
+    styleUrl: './navbar.component.scss'
 })
 export class NavbarComponent {
 

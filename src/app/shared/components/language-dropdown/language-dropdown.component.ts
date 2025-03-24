@@ -4,11 +4,10 @@ import { TranslateModule } from '@ngx-translate/core';
 import { AppState, AppStateService } from '../../services/app-state/app-state.service';
 
 @Component({
-  selector: 'app-language-dropdown',
-  standalone: true,
-  imports: [TranslateModule],
-  templateUrl: './language-dropdown.component.html',
-  styleUrl: './language-dropdown.component.scss'
+    selector: 'app-language-dropdown',
+    imports: [TranslateModule],
+    templateUrl: './language-dropdown.component.html',
+    styleUrl: './language-dropdown.component.scss'
 })
 export class LanguageDropdownComponent {
   @ViewChild('dropdown') dropdown: ElementRef<HTMLDivElement> | undefined;
