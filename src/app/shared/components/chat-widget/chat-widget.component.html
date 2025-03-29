@@ -43,10 +43,11 @@
       class="w-full h-24 resize-none bg-transparent border border-white/20 rounded px-3 py-2 text-sm text-white outline-none"></textarea>
 
     <button (click)="sendMessage(messageInput)" [disabled]="!messageInput.trim()"
-      class="bg-primary text-white p-3 rounded-full hover:bg-primary/90 transition disabled:opacity-30"
+      class="bg-primary text-white w-10 h-10 rounded-full hover:bg-primary/90 transition disabled:opacity-30 flex items-center justify-center"
       aria-label="Enviar mensaje">
-      <fa-icon [icon]="faPaperPlane" class="w-4 h-4"></fa-icon>
+      <fa-icon [icon]="faPaperPlane" class="w-4 content-center"></fa-icon>
     </button>
+
   </div>
 </div>
 }
