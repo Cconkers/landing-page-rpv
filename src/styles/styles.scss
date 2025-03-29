@@ -1,5 +1,6 @@
 @use "./variables" as *;
 @use "./theme" as *;
+@import './animations';
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -10,12 +11,17 @@ html {
   padding: $padding;
   margin: 0;
   padding: 0;
+  min-height: 100vh;
 }
+
 body {
-  background-color: var(--background-color);
+  background: var(--background-gradient);
+  min-height: 100vh;
+  color: var(--text-color);
 }
+
 .bg-background {
-  background-color: var(--background-color);
+  background: var(--background-gradient);
 }
 
 .shadow {
@@ -28,40 +34,30 @@ body {
     var(--tw-shadow);
 }
 
-// Default theme
-:root {
-  @include light-theme;
-}
-
-// Dark theme
-[data-theme="dark"] {
-  @include dark-theme;
-}
-
 // Example usage
 h1 {
-  color: var(--primary-color);
+  color: var(--primary);
 }
 
 p {
-  color: var(--text-color);
+  color: var(--text);
 }
 
 .text-danger {
-  color: var(--danger-color);
+  color: var(--danger);
   animation: blink 1s 3;
 }
 
 .border-danger {
-  border-color: var(--danger-color);
+  border-color: var(--danger);
 }
 
 .border-success {
-  border-color: var(--success-color);
+  border-color: var(--success);
 }
 
 .card-border {
-  border-color: var(--card-border-color);
+  border-color: var(--card-border);
 }
 
 @keyframes blink {
@@ -75,7 +71,7 @@ p {
 }
 @keyframes blink-border {
   from {
-    border: 1px solid var(--success-color);
+    border: 1px solid var(--success);
   }
   to {
     border: none;
@@ -83,7 +79,7 @@ p {
 }
 
 button {
-  background-color: var(--primary-color);
+  background-color: var(--primary);
   color: var(--text-color);
   border: none;
   padding: 10px 20px;
@@ -95,6 +91,7 @@ button {
 
   &:hover {
     background-color: var(--hover-primary);
+    color: var(--hover-text);
   }
 
   &:active {
@@ -108,7 +105,7 @@ button {
 }
 
 button.danger {
-  background-color: var(--danger-color);
+  background-color: var(--danger);
 
   &:hover {
     background-color: var(--hover-danger);
@@ -120,12 +117,13 @@ button.danger {
 }
 
 .button-invalid {
-  background-color: var(--disabled-color);
+  background-color: var(--disabled);
   cursor: not-allowed;
+  color: var(text-color-disabled);
 }
 
 .button-invalid:hover {
-  background-color: var(--disabled-color);
+  background-color: var(--disabled);
 }
 
 a {

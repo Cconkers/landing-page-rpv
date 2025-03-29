@@ -22,7 +22,12 @@
     "password": "Password",
     "sign-in": "Log in",
     "sign-up": "Create an account",
-    "not-have-account": "Don't have an account yet?"
+    "not-have-account": "Don't have an account yet?",
+    "remember-me": "Remember me",
+    "or-continue-with": "Or continue with",
+    "google": "Google",
+    "facebook": "Facebook",
+    "password-strength": "Password strength: {{strength}}%"
   },
   "validation": {
     "required": "This field is required.",
@@ -35,13 +40,51 @@
     "range": "The value must be between {{min}} and {{max}} (actual: {{actual}})."
   },
   "toast": {
-    "login-success": "Loged success, welcome {{userName}}!",
+    "login-success": "Logged in successfully, welcome {{userName}}!",
     "new-user-created": "User created successfully",
     "missing-fields": "Missing required fields",
-    "email-already-exists": "Email already exists in another account"
+    "email-already-exists": "Email already exists in another account",
+    "social-login-error": "Error logging in with social network"
   },
   "tooltip": {
     "show-password": "Show password",
     "hide-password": "Hide password"
+  },
+  "home": {
+    "hero": {
+      "title": "Web & AI Consulting for Businesses",
+      "subtitle": "Enhance your website, automate customer support, and scale with tailored AI-powered solutions.",
+      "cta-primary": "Schedule a Free Meeting",
+      "cta-secondary": "See How I Can Help"
+    },
+    "features": {
+      "title": "What We Can Do for Your Business",
+      "feature1": {
+        "title": "Custom AI for Your Business",
+        "description": "We develop GPT-powered smart assistants that integrate into your website and provide 24/7 automated support."
+      },
+      "feature2": {
+        "title": "Professional Web Maintenance",
+        "description": "We keep your site optimized, secure, and up to date — so you can focus on growth."
+      },
+      "feature3": {
+        "title": "Strategic Web Enhancements",
+        "description": "We analyze your current site and add new functionalities that truly impact your business."
+      }
+    },
+    "cta": {
+      "title": "Ready to Take Your Website to the Next Level?",
+      "description": "Let’s talk about how artificial intelligence and strategic web development can help you automate, save time, and increase revenue.",
+      "button": "Request Free Diagnosis"
+    },
+    "confident": {
+      "title": "More than development. We help you scale.",
+      "description": "At Beyond.AI, we specialize in helping established businesses improve their processes, automate repetitive tasks, and increase conversions. No need to rebuild your website. No headaches."
+    },
+    "footer": {
+      "rights": "All rights reserved",
+      "about": "About me",
+      "contact": "Contact"
+    }
   }
 }

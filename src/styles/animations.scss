@@ -1,0 +1,16 @@
+
+.fade-in {
+  @apply opacity-0 animate-fade-in transition-opacity duration-500 ease-out;
+}
+
+.fade-up {
+  @apply opacity-0 animate-fade-up transition-all duration-500 ease-out;
+}
+
+.fade-left {
+  @apply opacity-0 animate-fade-left transition-all duration-500 ease-out;
+}
+
+.zoom-in {
+  @apply opacity-0 animate-zoom-in transition-transform duration-500 ease-out;
+}

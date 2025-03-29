@@ -11,17 +11,17 @@ $disabled-color: #e0e0e0;
 
 $card-border-color: #c5c5c5;
 
-// Light Theme Colors
-$background-light: #FFFFFF;
-$text-light: #374151;
-$hover-light: color.adjust($background-light, $lightness: 10%);
-$active-light: color.adjust($background-light, $lightness: 15%);
+// Theme Colors
+$background: #1F2937;
+$text-color: #ffffff;
+$text-hover: #1F2937;
+$hover: color.adjust($background, $lightness: -10%);
+$active: color.adjust($background, $lightness: -15%);
 
-// Dark Theme Colors
-$background-dark: #1F2937;
-$text-dark: #F3F4F6;
-$hover-dark: color.adjust($background-dark, $lightness: -10%);
-$active-dark: color.adjust($background-dark, $lightness: -15%);
+// Gradient Colors
+$gradient-start: #000000;
+$gradient-mid: #2d1b4a;
+$gradient-end: #4a148c;
 
 // Fonts
 $font-family: "Roboto", sans-serif;

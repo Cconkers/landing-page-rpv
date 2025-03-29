@@ -32,15 +32,19 @@
               name="password" autocomplete="new-password"
               [ngClass]="{'border-danger': signUpForm.get('userPassword')?.invalid && signUpForm.get('userPassword')?.touched, 'border-success': signUpForm.get('userPassword')?.valid}"
               class="bg-background border text-text rounded-lg block w-full p-2.5 placeholder:text-text password-input" />
+
+
             <!-- Eye button password input -->
             <div class="eye-icon" (mouseenter)="showTooltip('userPassword')" (mouseleave)="hideTooltip('userPassword')">
               <ng-lottie class="cursor-pointer" (animationCreated)="animationPasswordCreated($event)"
                 [options]="lottieOptions" [styles]="{ width: '40px', height: '40px' }"
                 (click)="togglePasswordVisibility('userPassword')" [ngClass]="{ 'open': showUserPassword }"></ng-lottie>
             </div>
+
+
             <!-- Error message -->
             @if(tooltipVisibility.userPassword){
-              <div class="tooltip absolute -top-8 right-0">{{ tooltipText['userPassword'] }}</div>
+            <div class="tooltip absolute -top-8 right-0">{{ tooltipText['userPassword'] }}</div>
             }
           </div>
           <div class="error-message">
@@ -51,8 +55,10 @@
 
           <!-- Remember Me -->
           <div class="flex items-center mb-4">
-            <input type="checkbox" formControlName="rememberMe" id="rememberMe" class="w-4 h-4 text-primary bg-background border rounded focus:ring-primary">
-            <label for="rememberMe" class="ml-2 text-sm font-medium text-text">{{ 'sign-in.remember-me' | translate }}</label>
+            <input type="checkbox" formControlName="rememberMe" id="rememberMe"
+              class="w-4 h-4 text-primary bg-background border rounded focus:ring-primary">
+            <label for="rememberMe" class="ml-2 text-sm font-medium text-text">{{ 'sign-in.remember-me' | translate
+              }}</label>
           </div>
 
           <!-- Submit Button -->
@@ -61,9 +67,9 @@
             class="w-full text-background bg-primary font-medium rounded-lg text-sm px-5 py-2.5 text-center relative">
             <span>{{ 'sign-in.sign-in' | translate }}</span>
             @if(isLoading){
-              <div class="absolute inset-0 flex items-center justify-center">
-                <div class="animate-spin rounded-full h-5 w-5 border-b-2 border-background"></div>
-              </div>
+            <div class="absolute inset-0 flex items-center justify-center">
+              <div class="animate-spin rounded-full h-5 w-5 border-b-2 border-background"></div>
+            </div>
             }
           </button>
 

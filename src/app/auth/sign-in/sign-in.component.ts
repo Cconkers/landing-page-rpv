@@ -3,15 +3,17 @@ import { FormGroup, FormControl, ReactiveFormsModule } from '@angular/forms';
 import { InterpolationParameters, TranslateModule, TranslateService } from '@ngx-translate/core';
 import { AnimationItem } from 'lottie-web';
 import { AnimationOptions, LottieComponent } from 'ngx-lottie';
-import { ToastMessageService } from '../../../shared/services/toast-message-service/toast-message.service';
-import { GeneralValidators } from '../../../shared/validators/general-validators';
-import { PasswordValidators } from '../../../shared/validators/password-validators';
+
 import { AuthService } from '../auth-service/auth.service';
 import { NgTemplateOutlet, NgClass } from '@angular/common';
-import { ToastMessageComponent } from '../../../shared/components/toast-message/toast-message.component';
+
 import { IErrorFirebaseResponse } from '../auth-service/firebase-interfaces';
 import { RouterModule } from '@angular/router';
-import { AppStateService } from '../../../shared/services/app-state/app-state.service';
+import { ToastMessageComponent } from '../../shared/components/toast-message/toast-message.component';
+import { AppStateService } from '../../shared/services/app-state/app-state.service';
+import { ToastMessageService } from '../../shared/services/toast-message-service/toast-message.service';
+import { GeneralValidators } from '../../shared/validators/general-validators';
+
 
 @Component({
   selector: 'app-sign-in',
@@ -35,7 +37,7 @@ export class SignInComponent {
   passwordStrength = 0;
   signUpForm: FormGroup = new FormGroup({
     userEmail: new FormControl<string | null>(null, [GeneralValidators.required(), GeneralValidators.email()]),
-    userPassword: new FormControl<string | null>(null, [GeneralValidators.required(), GeneralValidators.minLength(8), PasswordValidators.strongPassword()]),
+    userPassword: new FormControl<string | null>(null, [GeneralValidators.required()]),
     rememberMe: new FormControl<boolean>(false),
   });
 
@@ -109,15 +111,6 @@ export class SignInComponent {
         this.animationPasswordEye?.playSegments([20, 40], true);
       }
     }
-  }
-
-  calculatePasswordStrength(password: string): void {
-    let strength = 0;
-    if (password.length >= 8) strength += 25;
-    if (/[A-Z]/.test(password)) strength += 25;
-    if (/[a-z]/.test(password)) strength += 25;
-    if (/[0-9]/.test(password)) strength += 25;
-    this.passwordStrength = strength;
   }
 
   /**

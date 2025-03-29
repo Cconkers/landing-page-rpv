@@ -9,30 +9,24 @@
   --warning: #{$warning-color};
   --success: #{$success-color};
   --disabled: #{$disabled-color};
-}
+  --text-color-disabled: #{$text-color};
 
-// Light theme mixin
-@mixin light-theme {
-  --background-color: #{$background-light};
-  --text-color: #{$text-light};
-  --card-border-color: #{$card-border-color};
-
-  // Interactive states
-  --hover-primary: #{color.adjust($primary-color, $lightness: -20%)};
-  --hover-secondary: #{color.adjust($secondary-color, $lightness: -20%)};
-  --active-primary: #{color.adjust($primary-color, $lightness: -30%)};
-  --active-secondary: #{color.adjust($secondary-color, $lightness: -30%)};
-  --hover-danger: #{color.adjust($danger-color, $lightness: -20%)};
-  --active-danger: #{color.adjust($danger-color, $lightness: -30%)};
-}
-
-// Dark theme mixin
-@mixin dark-theme {
-  --background-color: #{$background-dark};
-  --text-color: #{$text-dark};
-  --card-border-color: #{color.adjust($card-border-color, $lightness: -30%)};
+  // Base theme
+  --background: #{$background};
+  --background-color: #{$background};
+  --text-color: #{$text-color};
+  --card-border: #{color.adjust($card-border-color, $lightness: -30%)};
+  --background-gradient: linear-gradient(180deg,
+    #{$gradient-start} 0%,
+    #{$gradient-start} 20%,
+    #{$gradient-mid} 40%,
+    #{$gradient-mid} 60%,
+    #{$gradient-end} 80%,
+    #{$gradient-end} 100%
+  );
 
   // Interactive states
+  --hover-text: #{$text-hover};
   --hover-primary: #{color.adjust($primary-color, $lightness: 20%)};
   --hover-secondary: #{color.adjust($secondary-color, $lightness: 20%)};
   --active-primary: #{color.adjust($primary-color, $lightness: 30%)};

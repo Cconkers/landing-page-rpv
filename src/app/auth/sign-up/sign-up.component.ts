@@ -2,15 +2,16 @@ import { Component, OnInit } from '@angular/core';
 import { InterpolationParameters, TranslateModule, TranslateService } from '@ngx-translate/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { NgClass, NgTemplateOutlet } from '@angular/common';
-import { GeneralValidators } from '../../../shared/validators/general-validators';
-import { PasswordValidators } from '../../../shared/validators/password-validators';
-import { AuthService } from '../auth-service/auth.service';
-import { ToastMessageComponent } from "../../../shared/components/toast-message/toast-message.component";
-import { ToastMessageService } from '../../../shared/services/toast-message-service/toast-message.service';
+
 import { AnimationOptions, LottieComponent } from 'ngx-lottie';
 import { AnimationItem } from 'lottie-web';
 import { IErrorFirebaseResponse } from '../auth-service/firebase-interfaces';
 import { RouterModule } from '@angular/router';
+import { ToastMessageComponent } from '../../shared/components/toast-message/toast-message.component';
+import { ToastMessageService } from '../../shared/services/toast-message-service/toast-message.service';
+import { GeneralValidators } from '../../shared/validators/general-validators';
+import { PasswordValidators } from '../../shared/validators/password-validators';
+import { AuthService } from '../auth-service/auth.service';
 
 @Component({
     selector: 'app-sign-up',

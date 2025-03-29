@@ -83,8 +83,13 @@
                 "output": "assets"
               }
             ],
-            "styles": ["src/styles/styles.scss"],
-            "scripts": []
+            "styles": [
+              "src/styles/styles.scss",
+              "node_modules/@fortawesome/fontawesome-free/css/all.min.css"
+            ],
+            "scripts": [
+              "node_modules/@fortawesome/fontawesome-free/js/all.min.js"
+            ]
           }
         }
       }

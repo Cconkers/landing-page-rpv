@@ -27,7 +27,7 @@
     "or-continue-with": "O continuar con",
     "google": "Google",
     "facebook": "Facebook",
-    "password-strength": "Fuerza de la contraseña: {{strength}}%"
+    "password-strength": "Seguridad de la contraseña: {{strength}}%"
   },
   "validation": {
     "required": "Este campo es obligatorio.",
@@ -49,5 +49,42 @@
   "tooltip": {
     "show-password": "Ver contraseña",
     "hide-password": "Ocultar contraseña"
+  },
+  "home": {
+    "hero": {
+      "title": "Consultoría Web & IA para empresas",
+      "subtitle": "Mejora tu web, automatiza tu atención al cliente y escala con soluciones a medida integradas con IA.",
+      "cta-primary": "Solicita una Reunión Gratuita",
+      "cta-secondary": "Ver cómo puedo ayudarte"
+    },
+    "features": {
+      "title": "¿Qué podemos hacer por tu negocio?",
+      "feature1": {
+        "title": "IA personalizada para tu negocio",
+        "description": "Desarrollamos asistentes inteligentes con GPT que se integran en tu web y automatizan tu atención 24/7."
+      },
+      "feature2": {
+        "title": "Mantenimiento web profesional",
+        "description": "Nos encargamos de que tu sitio esté siempre optimizado, seguro y al día. Tú te concentras en crecer."
+      },
+      "feature3": {
+        "title": "Mejoras estratégicas para tu web",
+        "description": "Analizamos tu sitio actual y añadimos nuevas funcionalidades que impactan de verdad en tu negocio."
+      }
+    },
+    "cta": {
+      "title": "¿Listo para llevar tu web al siguiente nivel?",
+      "description": "Hablemos sobre cómo la inteligencia artificial y el desarrollo web estratégico pueden ayudarte a automatizar procesos, ahorrar tiempo y generar más ingresos.",
+      "button": "Solicitar Diagnóstico Gratuito"
+    },
+    "confident": {
+      "title": "Más que desarrollo. Te ayudamos a escalar.",
+      "description": "En Beyond.AI nos especializamos en ayudar a empresas con presencia digital a mejorar sus procesos, automatizar tareas repetitivas y aumentar su conversión. Sin rehacer tu web. Sin complicaciones."
+    },
+    "footer": {
+      "rights": "Todos los derechos reservados",
+      "about": "Sobre mí",
+      "contact": "Contacto"
+    }
   }
 }
