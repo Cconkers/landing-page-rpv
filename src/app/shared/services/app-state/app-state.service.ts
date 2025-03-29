@@ -57,7 +57,7 @@ export class AppStateService {
    *  Set the language and update the translation service
    * @param lang Language code (e.g., 'en' for English, 'es' for Spanish)
    */
-  setLanguage(lang: string): void {
+  setLanguage(lang: 'en' | 'es'): void {
     this._state.update((current) => ({
       ...current,
       language: lang,
@@ -80,7 +80,7 @@ export class AppStateService {
     localStorage.setItem('theme', theme);
   }
 
-  setUser(){}
+  setUser() { }
 
 
 }

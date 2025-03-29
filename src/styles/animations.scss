@@ -1,4 +1,3 @@
-
 .fade-in {
   @apply opacity-0 animate-fade-in transition-opacity duration-500 ease-out;
 }
@@ -13,4 +12,29 @@
 
 .zoom-in {
   @apply opacity-0 animate-zoom-in transition-transform duration-500 ease-out;
+}
+
+@layer utilities {
+  .typing-dots::after {
+    content: "";
+    display: inline-block;
+    width: 1em;
+    text-align: left;
+    animation: typingDots 0.7s steps(3, end) infinite;
+  }
+
+  @keyframes typingDots {
+    0% {
+      content: "";
+    }
+    33% {
+      content: ".";
+    }
+    66% {
+      content: "..";
+    }
+    100% {
+      content: "...";
+    }
+  }
 }

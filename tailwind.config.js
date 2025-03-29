@@ -10,7 +10,7 @@ module.exports = {
         'fade-in': 'fadeIn 0.6s ease-out forwards',
         'fade-up': 'fadeUp 0.6s ease-out forwards',
         'fade-left': 'fadeLeft 0.6s ease-out forwards',
-        'zoom-in': 'zoomIn 0.5s ease-out forwards'
+        'zoom-in': 'zoomIn 0.5s ease-out forwards',
       },
       keyframes: {
         fadeIn: {
@@ -28,7 +28,7 @@ module.exports = {
         zoomIn: {
           '0%': { opacity: '0', transform: 'scale(0.8)' },
           '100%': { opacity: '1', transform: 'scale(1)' }
-        }
+        },
       },
       colors: {
         primary: 'var(--primary)',

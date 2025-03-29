@@ -1,18 +1,27 @@
-<div class="relative inline-block text-left">
-  <!-- Botón Principal -->
-  <button (click)="toggleDropdown()" class="text-sm font-light text-text">
-    <span class="text-xs uppercase tracking-wider">{{ state$().language }}</span>
+<div class="relative inline-block text-left" appClickOutside (appClickOutside)="isDropdownOpen.set(false)">
+  <!-- Botón -->
+  <button type="button" (click)="toggleDropdown()" class="text-sm font-light text-text hover:underline">
+    <span class="text-xs uppercase tracking-wider">{{ 'laguange-dropdown.language' | translate}}</span>
   </button>
 
-  <!-- Dropdown -->
-  <div #dropdown class="hidden absolute right-0 mt-2 space-y-1">
-    <button class="block w-full text-sm text-text text-left hover:underline"
+  <!-- Dropdown visible/reactivo -->
+  <div class="absolute right-0 mt-2 space-y-1 p-2 rounded z-50 transition-all duration-200"
+    [class.opacity-0]="!isDropdownOpen()" [class.pointer-events-none]="!isDropdownOpen()"
+    [class.invisible]="!isDropdownOpen()">
+    <button type="button"
+      class="block w-full text-sm text-text text-left hover:text-primary bg-transparent px-2 py-1 rounded transition"
       (click)="changeLanguage('en')">
-      <span class="text-xs uppercase tracking-wider">{{'laguange-dropdown.english' | translate}}</span>
+      <span class="text-xs uppercase tracking-wider">
+        {{ 'laguange-dropdown.english' | translate }}
+      </span>
     </button>
-    <button class="block w-full text-sm text-text text-left hover:underline"
+
+    <button type="button"
+      class="block w-full text-sm text-text text-left hover:text-primary bg-transparent px-2 py-1 rounded transition"
       (click)="changeLanguage('es')">
-      <span class="text-xs uppercase tracking-wider">{{'laguange-dropdown.spanish' | translate}}</span>
+      <span class="text-xs uppercase tracking-wider">
+        {{ 'laguange-dropdown.spanish' | translate }}
+      </span>
     </button>
   </div>
 </div>

@@ -4,6 +4,7 @@
     "light": "Cambiar al modo claro"
   },
   "laguange-dropdown": {
+    "language": "Idioma",
     "english": "Inglés",
     "spanish": "Español"
   },
@@ -79,12 +80,26 @@
     },
     "confident": {
       "title": "Más que desarrollo. Te ayudamos a escalar.",
-      "description": "En Beyond.AI nos especializamos en ayudar a empresas con presencia digital a mejorar sus procesos, automatizar tareas repetitivas y aumentar su conversión. Sin rehacer tu web. Sin complicaciones."
+      "description": "En rpvai nos especializamos en ayudar a empresas con presencia digital a mejorar sus procesos, automatizar tareas repetitivas y aumentar su conversión. Sin rehacer tu web. Sin complicaciones."
     },
     "footer": {
       "rights": "Todos los derechos reservados",
       "about": "Sobre mí",
       "contact": "Contacto"
+    }
+  },
+  "chatbot": {
+    "type-here": "Escribe tu mensaje...",
+    "sent-message": "Enviar mensaje",
+    "whatcanidoforyou": "  ¿En qué puedo ayudarte?",
+    "virtual-assistant": "Asistente virtual",
+    "responses": {
+      "welcome": "Hola 👋 ¿En qué puedo ayudarte hoy?",
+      "thinking": "Déjame pensar un momento...",
+      "not-understood": "No he entendido bien tu mensaje. ¿Puedes reformularlo?",
+      "fallback": "Estoy aquí para ayudarte. Prueba con otra pregunta o contáctame directamente.",
+      "thanks": "¡Gracias por tu mensaje! Te responderé lo antes posible.",
+      "waiting": "Un segundo, estoy buscando la mejor respuesta..."
     }
   }
 }

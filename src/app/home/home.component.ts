@@ -12,11 +12,12 @@ import {
   faWrench,
   faChartLine
 } from '@fortawesome/free-solid-svg-icons';
+import { ChatWidgetComponent } from '../shared/components/chat-widget/chat-widget.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, TranslateModule, RouterModule, AnimateOnScrollDirective, AnimateOnScrollAutoDirective, FontAwesomeModule],
+  imports: [CommonModule, TranslateModule, RouterModule, AnimateOnScrollDirective, AnimateOnScrollAutoDirective, FontAwesomeModule, ChatWidgetComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
   animations: [fadeIn, fadeUp, fadeLeft, zoomIn]

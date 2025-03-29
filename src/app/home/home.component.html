@@ -117,11 +117,13 @@
 <!-- Footer Contact -->
 <footer class="bg-background/30 py-10 text-white text-center text-sm">
   <div class="container mx-auto px-4">
-    <p>&copy; {{ currentYear }} Beyond.AI — {{ 'home.footer.rights' | translate }}</p>
+    <p>&copy; {{ currentYear }} RPVAI — {{ 'home.footer.rights' | translate }}</p>
     <div class="mt-2 space-x-4">
       <a routerLink="/about" class="hover:underline">{{ 'home.footer.about' | translate }}</a>
       <a routerLink="/contact" class="hover:underline">{{ 'home.footer.contact' | translate }}</a>
-      <a href="mailto:hola@beyond.ai" class="hover:underline">hola&#64;beyond.ai</a>
+      <a href="mailto:contact@rpvai.com" rel="noopener" class="hover:underline">contact&#64;rpvai.com</a>
     </div>
   </div>
 </footer>
+
+<app-chat-widget />

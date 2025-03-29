@@ -4,6 +4,7 @@
     "light": "Change to light mode"
   },
   "laguange-dropdown": {
+    "language": "Language",
     "english": "English",
     "spanish": "Spanish"
   },
@@ -79,12 +80,26 @@
     },
     "confident": {
       "title": "More than development. We help you scale.",
-      "description": "At Beyond.AI, we specialize in helping established businesses improve their processes, automate repetitive tasks, and increase conversions. No need to rebuild your website. No headaches."
+      "description": "At rpvai, we specialize in helping established businesses improve their processes, automate repetitive tasks, and increase conversions. No need to rebuild your website. No headaches."
     },
     "footer": {
       "rights": "All rights reserved",
       "about": "About me",
       "contact": "Contact"
+    }
+  },
+  "chatbot": {
+    "type-here": "Escribe tu mensaje...",
+    "whatcanidoforyou": "¿En qué puedo ayudarte?",
+    "sent-message": "Sent message",
+    "virtual-assistant": "Virtual Assistant",
+    "responses": {
+      "welcome": "Hi there 👋 How can I help you today?",
+      "thinking": "Let me think for a second...",
+      "not-understood": "I didn't quite get that. Can you rephrase it?",
+      "fallback": "I'm here to help. Try asking something else or contact me directly.",
+      "thanks": "Thanks for your message! I'll get back to you as soon as I can.",
+      "waiting": "Hold on, looking for the best answer..."
     }
   }
 }

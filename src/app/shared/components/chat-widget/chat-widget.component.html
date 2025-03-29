@@ -1,0 +1,52 @@
+<!-- Botón flotante -->
+<div class="fixed bottom-6 right-6 z-50" (click)="toggleChat()">
+  <button
+    class="w-14 h-14 rounded-full bg-primary text-white shadow-lg flex items-center justify-center hover:scale-105 transition-all duration-300"
+    aria-label="Abrir chat">
+    <fa-icon [icon]="faComments" class="w-6 h-6"></fa-icon>
+  </button>
+</div>
+
+<!-- Chat modal -->
+@if (isOpen) {
+<div class="fixed bottom-24 right-6 bg-background text-text rounded-xl shadow-xl w-80 max-h-[70vh] flex flex-col z-40">
+  <div class="p-4 border-b border-white/10 font-semibold text-lg flex items-center gap-2">
+    {{ 'chatbot.virtual-assistant' | translate }}
+    <fa-icon [icon]="botIcon" class="w-6 h-6 text-primary"></fa-icon>
+  </div>
+
+  <div #messagesContainer class="p-4 text-sm text-white/80 flex-1 overflow-auto space-y-2">
+    <!-- Renderizado de mensajes -->
+    @for (msg of messages; track msg) {
+    @if (msg.text === '__typing__') {
+    <div class="text-left">
+      <div class="inline-block bg-white/10 text-white text-sm px-4 py-2 rounded-xl max-w-[75%]">
+        <span class="typing-dots"></span>
+      </div>
+    </div>
+    } @else {
+    <div [ngClass]="{ 'text-right': msg.from === 'user', 'text-left': msg.from === 'bot' }">
+      <div class="inline-block max-w-[75%] px-4 py-2 rounded-xl text-sm" [ngClass]="{
+                'bg-primary text-white': msg.from === 'user',
+                'bg-white/10 text-white': msg.from === 'bot'
+              }">
+        {{ msg.text }}
+      </div>
+    </div>
+    }
+    }
+  </div>
+
+  <!-- Input y botón de envío -->
+  <div class="p-2 border-t border-white/10 flex gap-2 items-start">
+    <textarea #chatInput [(ngModel)]="messageInput" maxlength="1000" [placeholder]="'chatbot.type-here' | translate"
+      class="w-full h-24 resize-none bg-transparent border border-white/20 rounded px-3 py-2 text-sm text-white outline-none"></textarea>
+
+    <button (click)="sendMessage(messageInput)" [disabled]="!messageInput.trim()"
+      class="bg-primary text-white p-3 rounded-full hover:bg-primary/90 transition disabled:opacity-30"
+      aria-label="Enviar mensaje">
+      <fa-icon [icon]="faPaperPlane" class="w-4 h-4"></fa-icon>
+    </button>
+  </div>
+</div>
+}
