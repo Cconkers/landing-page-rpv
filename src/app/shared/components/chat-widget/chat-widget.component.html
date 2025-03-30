@@ -9,45 +9,66 @@
 
 <!-- Chat modal -->
 @if (isOpen) {
-<div class="fixed bottom-24 right-6 bg-background text-text rounded-xl shadow-xl w-80 max-h-[70vh] flex flex-col z-40">
-  <div class="p-4 border-b border-white/10 font-semibold text-lg flex items-center gap-2">
-    {{ 'chatbot.virtual-assistant' | translate }}
-    <fa-icon [icon]="botIcon" class="w-6 h-6 text-primary"></fa-icon>
-  </div>
+  <div
+    class="scrollbar-custom shadow-[0_0_40px_rgba(0,0,0,0.7)] backdrop-blur-md fixed bottom-24 right-10 bg-[#1f1f2e] text-text rounded-xl w-80 max-h-[70vh] flex flex-col z-40 overflow-hidden"
+    [ngClass]="animationClass">
 
-  <div #messagesContainer class="p-4 text-sm text-white/80 flex-1 overflow-auto space-y-2">
-    <!-- Renderizado de mensajes -->
-    @for (msg of messages; track msg) {
-    @if (msg.text === '__typing__') {
-    <div class="text-left">
-      <div class="inline-block bg-white/10 text-white text-sm px-4 py-2 rounded-xl max-w-[75%]">
-        <span class="typing-dots"></span>
-      </div>
-    </div>
-    } @else {
-    <div [ngClass]="{ 'text-right': msg.from === 'user', 'text-left': msg.from === 'bot' }">
-      <div class="inline-block max-w-[75%] px-4 py-2 rounded-xl text-sm" [ngClass]="{
-                'bg-primary text-white': msg.from === 'user',
-                'bg-white/10 text-white': msg.from === 'bot'
-              }">
-        {{ msg.text }}
-      </div>
-    </div>
-    }
-    }
-  </div>
-
-  <!-- Input y botón de envío -->
-  <div class="p-2 border-t border-white/10 flex gap-2 items-start">
-    <textarea #chatInput [(ngModel)]="messageInput" maxlength="1000" [placeholder]="'chatbot.type-here' | translate"
-      class="w-full h-24 resize-none bg-transparent border border-white/20 rounded px-3 py-2 text-sm text-white outline-none"></textarea>
-
-    <button (click)="sendMessage(messageInput)" [disabled]="!messageInput.trim()"
-      class="bg-primary text-white w-10 h-10 rounded-full hover:bg-primary/90 transition disabled:opacity-30 flex items-center justify-center"
-      aria-label="Enviar mensaje">
-      <fa-icon [icon]="faPaperPlane" class="w-4 content-center"></fa-icon>
+    <!-- Botón cerrar -->
+    <button
+      (click)="toggleChat()"
+      class="text-white/60 bg-transparent hover:text-white transition hover:scale-150 rounded-full focus:outline-none absolute left-pos-close-bot-button"
+      aria-label="Cerrar chat">
+      <fa-icon [icon]="faChevronDown" size="1x"></fa-icon>
     </button>
 
+    <!-- Header del chat -->
+    <div class="p-4 border-b border-white/10 font-semibold text-lg flex items-center gap-2">
+      {{ 'chatbot.virtual-assistant' | translate }}
+      <fa-icon [icon]="botIcon" class="w-6 h-6 text-primary"></fa-icon>
+    </div>
+
+    <!-- Área de mensajes -->
+    <div #messagesContainer class="p-4 text-sm text-white/80 flex-1 overflow-auto space-y-2">
+      @for (msg of messages; track msg) {
+        <div [ngClass]="{ 'text-right': msg.from === 'user', 'text-left': msg.from === 'bot' }">
+          <div
+            class="inline-block max-w-[75%] px-4 py-2 rounded-xl text-sm"
+            [ngClass]="{
+              'bg-primary text-white': msg.from === 'user',
+              'bg-white/10 text-white': msg.from === 'bot'
+            }">
+            {{ msg.text }}
+          </div>
+        </div>
+      }
+
+      <!-- Indicador de escritura -->
+      @if (isBotTyping) {
+        <div class="text-left">
+          <div class="inline-block bg-white/10 text-white text-sm px-4 py-2 rounded-xl max-w-[75%]">
+            <span class="typing-dots"></span>
+          </div>
+        </div>
+      }
+    </div>
+
+    <!-- Input y botón de envío -->
+    <div class="p-2 border-t border-white/10 flex gap-2 items-start">
+      <textarea
+        #chatInput
+        [(ngModel)]="messageInput"
+        maxlength="1000"
+        [placeholder]="'chatbot.type-here' | translate"
+        class="w-full h-24 resize-none bg-transparent border border-white/20 rounded px-3 py-2 text-sm text-white outline-none">
+      </textarea>
+
+      <button
+        (click)="sendMessage(messageInput)"
+        [disabled]="!messageInput.trim()"
+        class="bg-primary text-white w-10 h-10 rounded-full hover:bg-primary/90 transition disabled:opacity-30 flex items-center justify-center"
+        aria-label="Enviar mensaje">
+        <fa-icon [icon]="faPaperPlane" class="w-4"></fa-icon>
+      </button>
+    </div>
   </div>
-</div>
 }

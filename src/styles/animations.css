@@ -14,7 +14,6 @@
   @apply opacity-0 animate-zoom-in transition-transform duration-500 ease-out;
 }
 
-// Animation 3 dots bot thinking
 @layer utilities {
   .typing-dots::after {
     content: "";
@@ -23,7 +22,6 @@
     text-align: left;
     animation: typingDots 0.7s steps(3, end) infinite;
   }
-
   @keyframes typingDots {
     0% {
       content: "";
@@ -39,47 +37,38 @@
     }
   }
 }
-
-// Chat aparece desde el botón
 @keyframes chatSlideFromButton {
   0% {
     opacity: 0;
     transform: scale(0) translateX(1200px) translateY(1400px);
   }
-
   80% {
     opacity: 0.2;
     transform: scale(0.8);
   }
-
   100% {
     opacity: 1;
     transform: scale(1) translateX(0) translateY(0);
   }
 }
-
-// Chat se esconde hacia el botón
 @keyframes chatSlideToButton {
   0% {
     opacity: 1;
     transform: scale(1) translateX(0) translateY(0);
   }
-
   20% {
     opacity: 0.2;
     transform: scale(0.8);
   }
-
   100% {
     opacity: 0;
     transform: scale(0.05) translateX(1200px) translateY(1400px);
   }
 }
-
 .chat-in {
   animation: chatSlideFromButton 0.3s ease-out forwards;
 }
 
 .chat-out {
   animation: chatSlideToButton 0.3s ease-in forwards;
-}
+}/*# sourceMappingURL=animations.css.map */

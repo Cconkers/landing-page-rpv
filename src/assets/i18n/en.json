@@ -89,8 +89,8 @@
     }
   },
   "chatbot": {
-    "type-here": "Escribe tu mensaje...",
-    "whatcanidoforyou": "¿En qué puedo ayudarte?",
+    "type-here": "Write your message...",
+    "whatcanidoforyou": "How can I assist you?",
     "sent-message": "Sent message",
     "virtual-assistant": "Virtual Assistant",
     "responses": {
