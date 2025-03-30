@@ -1,6 +1,6 @@
 import { Component, Renderer2, Inject } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
-import { environment } from '../../../environments/environment';
+import { environment } from '../../../environments/environment.prod';
 
 
 @Component({
