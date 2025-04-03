@@ -1,8 +1,8 @@
 <!-- Hero BG: Video + Overlay -->
 <div class="absolute inset-0 pointer-events-none z-0">
   <video #videoRef autoplay muted loop playsinline
-    class="absolute inset-0 w-full h-full object-cover pointer-events-none z-0">
-    <source src="/videos/hero-bg3.mp4" type="video/mp4" />
+    class="absolute inset-0 w-full h-full object-cover pointer-events-none z-0 opacity-60">
+    <source src="/assets/videos/hero-bg.webm" type="video/webm" />
     Tu navegador no soporta la etiqueta de video.
   </video>
 </div>
@@ -36,6 +36,8 @@
     </div>
   </main>
 </section>
+
+<div class="w-full h-12 bg-background z-10 clip-bottom-triangle"></div>
 
 <!-- Features Section -->
 <section appAnimateOnScroll="animate-fade-up" class="py-20 bg-background/20 backdrop-blur-sm">
