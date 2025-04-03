@@ -1,25 +1,26 @@
 <div class="relative inline-block text-left" appClickOutside (appClickOutside)="isDropdownOpen.set(false)">
   <!-- Botón -->
-  <button type="button" (click)="toggleDropdown()" class="text-sm font-light text-text hover:underline">
-    <span class="text-xs uppercase tracking-wider">{{ 'laguange-dropdown.language' | translate}}</span>
+  <button type="button" (click)="toggleDropdown()"
+    class="text-sm font-light text-text hover:text-secondary hover:opacity-50">
+    <span class="uppercase tracking-wider">{{ 'laguange-dropdown.language' | translate}}</span>
   </button>
 
   <!-- Dropdown visible/reactivo -->
-  <div class="absolute right-0 mt-2 space-y-1 p-2 rounded z-50 transition-all duration-200"
+  <div class="z-50 absolute right-0 mt-2 space-y-1 p-2 rounded transition-all duration-300"
     [class.opacity-0]="!isDropdownOpen()" [class.pointer-events-none]="!isDropdownOpen()"
     [class.invisible]="!isDropdownOpen()">
     <button type="button"
-      class="block w-full text-sm text-text text-left hover:text-primary bg-transparent px-2 py-1 rounded transition"
+      class=" block w-full text-sm  text-left hover:text-secondary bg-transparent px-2 py-1 rounded transition"
       (click)="changeLanguage('en')">
-      <span class="text-xs uppercase tracking-wider">
+      <span [class.text-white]="this.state$().language !== 'en'" class=" text-primary hover:text-secondary text-xs uppercase tracking-wider transition">
         {{ 'laguange-dropdown.english' | translate }}
       </span>
     </button>
 
-    <button type="button"
-      class="block w-full text-sm text-text text-left hover:text-primary bg-transparent px-2 py-1 rounded transition"
+    <button type="button" class="block w-full text-sm text-left  bg-transparent px-2 py-1 rounded transition"
       (click)="changeLanguage('es')">
-      <span class="text-xs uppercase tracking-wider">
+      <span [class.text-white]="this.state$().language !== 'es'"
+        class=" text-primary hover:text-secondary text-xs uppercase tracking-wider transition">
         {{ 'laguange-dropdown.spanish' | translate }}
       </span>
     </button>

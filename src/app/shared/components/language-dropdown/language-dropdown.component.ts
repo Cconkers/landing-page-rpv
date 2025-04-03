@@ -27,8 +27,8 @@ export class LanguageDropdownComponent {
   }
 
   changeLanguage(lang: 'en' | 'es') {
-    // tu lógica aquí
     this.isDropdownOpen.set(false); // cierra después de elegir
-    this.appStateService.setLanguage(lang)
+    setTimeout(() => { this.appStateService.setLanguage(lang) }, 200)
+
   }
 }

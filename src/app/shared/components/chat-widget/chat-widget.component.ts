@@ -9,8 +9,8 @@ import {
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
-import { faComments, faRobot, faPaperPlane, faChevronDown } from '@fortawesome/free-solid-svg-icons';
-import { TranslateModule, TranslateService, LangChangeEvent } from '@ngx-translate/core';
+import { faComments, faPaperPlane, faChevronDown } from '@fortawesome/free-solid-svg-icons';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { ChatService } from './chat.service';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
@@ -28,7 +28,6 @@ export class ChatWidgetComponent implements AfterViewChecked {
   faComments = faComments;
   faPaperPlane = faPaperPlane;
   faChevronDown = faChevronDown;
-  botIcon = faRobot;
 
   isOpen = false;
   messageInput = '';

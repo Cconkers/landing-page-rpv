@@ -1,30 +1,30 @@
 @use "sass:color";
 
-// Sass Colors
-$primary-color: #3B82F6;
-$secondary-color: #10B981;
-$danger-color: #e74c3c;
-$success-color: #198d4991;
-$warning-color: #f1c40f;
+// Base Colors
+$primary-color: #42547b;
+$secondary-color: #7c83ff;
+$danger-color: #ef4444;
+$success-color: #22c55e;
+$warning-color: #facc15;
+$disabled-color: #6b7280;
+$card-border-color: #334155;
 
-$disabled-color: #e0e0e0;
-
-$card-border-color: #c5c5c5;
-
-// Theme Colors
-$background: #1F2937;
-$text-color: #ffffff;
-$text-hover: #1F2937;
+// Text & Background
+$background: #0f172a;
+$text-color: #f3f4f6;
+$text-hover: #1e293b;
 $hover: color.adjust($background, $lightness: -10%);
 $active: color.adjust($background, $lightness: -15%);
 
-// Gradient Colors
-$gradient-start: #000000;
-$gradient-mid: #2d1b4a;
-$gradient-end: #4a148c;
+// Gradient base (same dark tone for cohesive feel)
+$gradient-start: #0f172a;
+$gradient-mid: #1e293b;
+$gradient-end: #0f172a;
+
+// Primary Gradient (reusable instead of hardcode)
+$primary-gradient-start: #42547b;
+$primary-gradient-end: #7c83ff;
 
 // Fonts
-$font-family: "Roboto", sans-serif;
-
-// Spacing
+$font-family: "Inter", sans-serif;
 $padding: 16px;

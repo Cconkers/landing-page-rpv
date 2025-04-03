@@ -4,6 +4,7 @@
 :root {
   // Theme colors
   --primary: #{$primary-color};
+  --primary-gradient: linear-gradient(135deg, #{$primary-gradient-start}, #{$primary-gradient-end});
   --secondary: #{$secondary-color};
   --danger: #{$danger-color};
   --warning: #{$warning-color};
@@ -15,15 +16,8 @@
   --background: #{$background};
   --background-color: #{$background};
   --text-color: #{$text-color};
-  --card-border: #{color.adjust($card-border-color, $lightness: -30%)};
-  --background-gradient: linear-gradient(180deg,
-    #{$gradient-start} 0%,
-    #{$gradient-start} 20%,
-    #{$gradient-mid} 40%,
-    #{$gradient-mid} 60%,
-    #{$gradient-end} 80%,
-    #{$gradient-end} 100%
-  );
+  --card-border: #{color.adjust($card-border-color, $lightness: -10%)};
+  --background-gradient: linear-gradient(180deg, #{$gradient-start} 0%, #{$gradient-mid} 50%, #{$gradient-end} 100%);
 
   // Interactive states
   --hover-text: #{$text-hover};

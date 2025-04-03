@@ -1,7 +1,29 @@
-<nav class="text-text">
+<nav class="w-full z-50">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex items-center justify-end h-16">
-      <app-language-dropdown></app-language-dropdown>
+    <div class="flex items-center justify-between h-16">
+
+      <!-- Logo o nombre -->
+      <a routerLink="/"
+        class="cursor-pointer hover:no-underline text-base tracking-tight hover:opacity-80 transition">RPVAI</a>
+
+      <!-- Enlaces -->
+      <div class="hidden md:flex space-x-8">
+        <a routerLink="/services" routerLinkActive="font-bold border-b-2 border-primary"
+          class="text-white cursor-pointer hover:text-secondary hover:no-underline hover:opacity-50  text-xs uppercase tracking-wider transition">Servicios</a>
+        <a routerLink="/pricing" routerLinkActive=" font-bold border-b-2 border-primary"
+          class="text-white cursor-pointer hover:text-secondary  hover:no-underline hover:opacity-50 text-xs uppercase tracking-wider transition">Precios</a>
+        <a routerLink="/contact" routerLinkActive="font-bold border-b-2 border-primary"
+          class="text-white cursor-pointer hover:text-secondary  hover:no-underline hover:opacity-50 text-xs uppercase tracking-wider transition">Contacto</a>
+      </div>
+
+      <!-- Idioma -->
+      <div class="flex items-center space-x-4">
+        <app-language-dropdown></app-language-dropdown>
+        <!-- Modo oscuro (opcional)
+        <button class="text-white hover:text-gray-300 transition">
+          <fa-icon [icon]="['fas', 'moon']"></fa-icon>
+        </button> -->
+      </div>
     </div>
   </div>
 </nav>

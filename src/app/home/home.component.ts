@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 import { RouterModule } from '@angular/router';
@@ -14,6 +14,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { ChatWidgetComponent } from '../shared/components/chat-widget/chat-widget.component';
 
+
 @Component({
   selector: 'app-home',
   standalone: true,
@@ -24,9 +25,22 @@ import { ChatWidgetComponent } from '../shared/components/chat-widget/chat-widge
 })
 
 export class HomeComponent {
+  @ViewChild('videoRef') videoRef?: ElementRef<HTMLVideoElement>;
+
   faRobot = faRobot;
   faWrench = faWrench;
   faChartLine = faChartLine;
   public currentYear: number = new Date().getFullYear();
 
+
+  ngAfterViewInit() {
+    if (this.videoRef) {
+      const video = this.videoRef.nativeElement;
+      video.muted = true;
+      video.play().catch((e) => {
+        console.warn('No se pudo reproducir automáticamente el vídeo:', e);
+      });
+    }
+
+  }
 }

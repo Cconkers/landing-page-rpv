@@ -92,9 +92,9 @@
     "type-here": "Escribe tu mensaje...",
     "sent-message": "Enviar mensaje",
     "whatcanidoforyou": "  ¿En qué puedo ayudarte?",
-    "virtual-assistant": "Asistente virtual",
+    "virtual-assistant": "Asistente RPV",
     "responses": {
-      "welcome": "Hola 👋 ¿En qué puedo ayudarte hoy?",
+      "welcome": "Hola, ¿En qué puedo ayudarte hoy?",
       "thinking": "Déjame pensar un momento...",
       "not-understood": "No he entendido bien tu mensaje. ¿Puedes reformularlo?",
       "fallback": "Estoy aquí para ayudarte. Prueba con otra pregunta o contáctame directamente.",
